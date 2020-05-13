@@ -15,12 +15,14 @@
         {
             "label": "start LearnClassPath - MainWithPackage",
             "type": "shell",
-            "command": "java -cp LearnClassPath com.learning.MainWithPackage"
+            "command": "java -cp LearnClassPath com.learning.MainWithPackage",
+            "problemMatcher": []
         },
         {
             "label": "start LearnClassPath - MainWithoutPackage",
             "type": "shell",
-            "command": "java -cp LearnClassPath/com/learning MainWithoutPackage"
+            "command": "java -cp LearnClassPath:LearnClassPath/com/learning MainWithoutPackage",
+            "problemMatcher": []
         }
     ]
 }
