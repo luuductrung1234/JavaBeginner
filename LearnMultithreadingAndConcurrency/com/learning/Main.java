@@ -1,6 +1,9 @@
 package com.learning;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,7 +17,8 @@ public class Main {
                 "./assets/file4.out.txt", "./assets/file5.out.txt", "./assets/file6.out.txt", };
 
         runAdderInSingleThread(inFiles, outFiles);
-        runAdderInMultiThread(inFiles, outFiles);
+        runAdderInMultiThreads(inFiles, outFiles);
+        runAdderInThreadPool(inFiles, outFiles);
     }
 
     private static void runAdderInSingleThread(String[] inFiles, String[] outFiles) {
@@ -28,7 +32,7 @@ public class Main {
         }
     }
 
-    private static void runAdderInMultiThread(String[] inFiles, String[] outFiles) {
+    private static void runAdderInMultiThreads(String[] inFiles, String[] outFiles) {
         Thread[] threads = new Thread[inFiles.length];
         for (int i = 0; i < inFiles.length; i++) {
             Adder adder = new Adder(inFiles[i], outFiles[i]);
@@ -40,6 +44,20 @@ public class Main {
                 thread.join(); // Blocks main thread, waiting for threads completion.
             }
         } catch (InterruptedException e) {
+            logger.log(Level.SEVERE, e.getClass().getSimpleName() + " - " + e.getMessage(), e);
+        }
+    }
+
+    private static void runAdderInThreadPool(String[] inFiles, String[] outFiles) {
+        try {
+            ExecutorService executorService = Executors.newFixedThreadPool(3);
+            for (int i = 0; i < inFiles.length; i++) {
+                Adder adder = new Adder(inFiles[i], outFiles[i]);
+                executorService.submit(adder);
+            }
+            executorService.shutdown();
+            executorService.awaitTermination(60, TimeUnit.SECONDS);
+        } catch (Exception e) {
             logger.log(Level.SEVERE, e.getClass().getSimpleName() + " - " + e.getMessage(), e);
         }
     }
