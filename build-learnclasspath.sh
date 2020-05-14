@@ -9,4 +9,6 @@ javac com/teaching/Student.java
 javac com/learning/MainWithPackage.java
 javac com/learning/MainWithoutPackage.java
 
-echo "Build Completed!"
+echo "Build Learn ClassPath Completed!"
+
+cd ..

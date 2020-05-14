@@ -4,24 +4,71 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build LearnClassPath",
+            "label": "build",
             "type": "shell",
             "command": "sh",
             "osx": {
-                "args": ["build-learnclasspath.sh"]
+                "args": ["build.sh"]
             },
             "problemMatcher": []
         },
         {
             "label": "start LearnClassPath - MainWithPackage",
             "type": "shell",
-            "command": "java -cp LearnClassPath com.learning.MainWithPackage",
+            "command": "java",
+            "args": ["-cp", "LearnClassPath", "com.learning.MainWithPackage"],
+            "dependsOn": ["build"],
             "problemMatcher": []
         },
         {
             "label": "start LearnClassPath - MainWithoutPackage",
             "type": "shell",
-            "command": "java -cp LearnClassPath:LearnClassPath/com/learning MainWithoutPackage",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnClassPath:LearnClassPath/com/learning",
+                "MainWithoutPackage"
+            ],
+            "dependsOn": ["build"],
+            "problemMatcher": []
+        },
+        {
+            "label": "start LearnLogging - Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-Djava.util.logging.SimpleFormatter.format=%5$s,%2$s,%4$s%n",
+                "-cp",
+                "LearnLogging",
+                "com.learning.Main"
+            ],
+            "dependsOn": ["build"],
+            "problemMatcher": []
+        },
+        {
+            "label": "start LearnLogging - MainWithConfigFile",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-Djava.util.logging.config.file=LearnLogging/com/learning/log.properties",
+                "-cp",
+                "LearnLogging",
+                "com.learning.Main"
+            ],
+            "dependsOn": ["build"],
+            "problemMatcher": []
+        },
+        {
+            "label": "start LearnLogging - MainLoggerNaming",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-Djava.util.logging.config.file=LearnLogging/com/teaching/log.properties",
+                "-cp",
+                "LearnLogging",
+                "com.teaching.MainLoggerNaming"
+            ],
+            "dependsOn": ["build"],
             "problemMatcher": []
         }
     ]
