@@ -66,12 +66,20 @@ public class Main {
     }
 
     private static void runCallableAdderInThreadPool(String[] inFiles) {
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
         Future<Integer>[] results = new Future[inFiles.length];
-        for (int i = 0; i < inFiles.length; i++) {
-            CallableAdder adder = new CallableAdder(inFiles[i]);
-            executorService.submit(adder);
+
+        try {
+            ExecutorService executorService = Executors.newFixedThreadPool(3);
+            for (int i = 0; i < inFiles.length; i++) {
+                CallableAdder adder = new CallableAdder(inFiles[i]);
+                executorService.submit(adder);
+            }
+            executorService.shutdown();
+            executorService.awaitTermination(60, TimeUnit.SECONDS);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getClass().getSimpleName() + " - " + e.getMessage(), e);
         }
+
         for (Future<Integer> result : results) {
             try {
                 int value = result.get(); // blocks until return value available

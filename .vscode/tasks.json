@@ -82,6 +82,18 @@
             ],
             "dependsOn": ["build"],
             "problemMatcher": []
+        },
+        {
+            "label": "start Learn Multithreading and Concurrency - MainConcurrency",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnMultithreadingAndConcurrency",
+                "org.researching.MainConcurrency"
+            ],
+            "dependsOn": ["build"],
+            "problemMatcher": []
         }
     ]
 }
