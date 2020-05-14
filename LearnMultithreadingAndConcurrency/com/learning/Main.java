@@ -1,8 +1,10 @@
 package com.learning;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +21,7 @@ public class Main {
         runAdderInSingleThread(inFiles, outFiles);
         runAdderInMultiThreads(inFiles, outFiles);
         runAdderInThreadPool(inFiles, outFiles);
+        runCallableAdderInThreadPool(inFiles);
     }
 
     private static void runAdderInSingleThread(String[] inFiles, String[] outFiles) {
@@ -59,6 +62,23 @@ public class Main {
             executorService.awaitTermination(60, TimeUnit.SECONDS);
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getClass().getSimpleName() + " - " + e.getMessage(), e);
+        }
+    }
+
+    private static void runCallableAdderInThreadPool(String[] inFiles) {
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        Future<Integer>[] results = new Future[inFiles.length];
+        for (int i = 0; i < inFiles.length; i++) {
+            CallableAdder adder = new CallableAdder(inFiles[i]);
+            executorService.submit(adder);
+        }
+        for (Future<Integer> result : results) {
+            try {
+                int value = result.get(); // blocks until return value available
+                logger.log(Level.INFO, "Total: {0}", value);
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, e.getClass().getSimpleName() + " - " + e.getMessage(), e);
+            }
         }
     }
 }
