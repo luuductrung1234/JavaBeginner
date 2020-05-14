@@ -4,11 +4,11 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build LearnClassPath",
+            "label": "build",
             "type": "shell",
             "command": "sh",
             "osx": {
-                "args": ["build-learnclasspath.sh"]
+                "args": ["build.sh"]
             },
             "problemMatcher": []
         },
@@ -16,12 +16,21 @@
             "label": "start LearnClassPath - MainWithPackage",
             "type": "shell",
             "command": "java -cp LearnClassPath com.learning.MainWithPackage",
+            "dependsOn": ["build"],
             "problemMatcher": []
         },
         {
             "label": "start LearnClassPath - MainWithoutPackage",
             "type": "shell",
             "command": "java -cp LearnClassPath:LearnClassPath/com/learning MainWithoutPackage",
+            "dependsOn": ["build"],
+            "problemMatcher": []
+        },
+        {
+            "label": "start LearnLogging - Main",
+            "type": "shell",
+            "command": "java -cp LearnLogging com.learning.Main",
+            "dependsOn": ["build"],
             "problemMatcher": []
         }
     ]
