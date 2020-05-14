@@ -15,14 +15,20 @@
         {
             "label": "start LearnClassPath - MainWithPackage",
             "type": "shell",
-            "command": "java -cp LearnClassPath com.learning.MainWithPackage",
+            "command": "java",
+            "args": ["-cp", "LearnClassPath", "com.learning.MainWithPackage"],
             "dependsOn": ["build"],
             "problemMatcher": []
         },
         {
             "label": "start LearnClassPath - MainWithoutPackage",
             "type": "shell",
-            "command": "java -cp LearnClassPath:LearnClassPath/com/learning MainWithoutPackage",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnClassPath:LearnClassPath/com/learning",
+                "MainWithoutPackage"
+            ],
             "dependsOn": ["build"],
             "problemMatcher": []
         },
@@ -48,6 +54,19 @@
                 "-cp",
                 "LearnLogging",
                 "com.learning.Main"
+            ],
+            "dependsOn": ["build"],
+            "problemMatcher": []
+        },
+        {
+            "label": "start LearnLogging - MainLoggerNaming",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-Djava.util.logging.config.file=LearnLogging/com/teaching/log.properties",
+                "-cp",
+                "LearnLogging",
+                "com.teaching.MainLoggerNaming"
             ],
             "dependsOn": ["build"],
             "problemMatcher": []
