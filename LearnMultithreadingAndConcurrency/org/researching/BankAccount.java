@@ -9,13 +9,18 @@ public class BankAccount {
     }
 
     /**
+     * synchronized method effected in instance level
+     * 
      * @return the balance
      */
-    public int getBalance() {
+    public synchronized int getBalance() {
         return balance;
     }
 
-    public void deposit(int amount) {
+    /**
+     * synchronized method effected in instance level
+     */
+    public synchronized void deposit(int amount) {
         balance += amount;
     }
 }
