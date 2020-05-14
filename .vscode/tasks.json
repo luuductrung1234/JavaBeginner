@@ -13,7 +13,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start LearnClassPath - MainWithPackage",
+            "label": "start Learn ClassPath - MainWithPackage",
             "type": "shell",
             "command": "java",
             "args": ["-cp", "LearnClassPath", "com.learning.MainWithPackage"],
@@ -21,7 +21,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start LearnClassPath - MainWithoutPackage",
+            "label": "start Learn ClassPath - MainWithoutPackage",
             "type": "shell",
             "command": "java",
             "args": [
@@ -33,7 +33,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start LearnLogging - Main",
+            "label": "start Learn Logging - Main",
             "type": "shell",
             "command": "java",
             "args": [
@@ -46,7 +46,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start LearnLogging - MainWithConfigFile",
+            "label": "start Learn Logging - MainWithConfigFile",
             "type": "shell",
             "command": "java",
             "args": [
@@ -59,7 +59,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start LearnLogging - MainLoggerNaming",
+            "label": "start Learn Logging - MainLoggerNaming",
             "type": "shell",
             "command": "java",
             "args": [
@@ -67,6 +67,18 @@
                 "-cp",
                 "LearnLogging",
                 "com.teaching.MainLoggerNaming"
+            ],
+            "dependsOn": ["build"],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Multithreading and Concurrency - Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnMultithreadingAndConcurrency",
+                "com.learning.Main"
             ],
             "dependsOn": ["build"],
             "problemMatcher": []
