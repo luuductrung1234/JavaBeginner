@@ -3,8 +3,6 @@ package org.researching;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.researching.BankAccount;
-
 public class Worker implements Runnable {
     private BankAccount account;
     private static Logger logger = Logger.getLogger(Worker.class.getName());

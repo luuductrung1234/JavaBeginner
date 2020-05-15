@@ -23,4 +23,11 @@ public class BankAccount {
     public synchronized void deposit(int amount) {
         balance += amount;
     }
+
+    /**
+     * synchronized method effected in instance level
+     */
+    public synchronized void withdrawal(int amount) {
+        balance -= amount;
+    }
 }
