@@ -14,6 +14,16 @@
             "problemMatcher": []
         },
         {
+            "label": "init",
+            "type": "shell",
+            "group": "none",
+            "command": "sh",
+            "osx": {
+                "args": ["init.sh", "${input:firstParamter}"]
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "start Learn ClassPath - MainWithPackage",
             "type": "shell",
             "command": "java",
@@ -108,6 +118,12 @@
             "options": ["build", "none"],
             "default": "none",
             "description": "task dependency"
+        },
+        {
+            "id": "firstParamter",
+            "type": "promptString",
+            "default": "LearnSomething",
+            "description": "first paramter for bash script"
         }
     ]
 }
