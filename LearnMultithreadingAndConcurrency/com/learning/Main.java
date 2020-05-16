@@ -1,6 +1,8 @@
 package com.learning;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -66,13 +68,13 @@ public class Main {
     }
 
     private static void runCallableAdderInThreadPool(String[] inFiles) {
-        Future<Integer>[] results = new Future[inFiles.length];
+        List<Future<Integer>> results = new ArrayList<>();
 
         try {
             ExecutorService executorService = Executors.newFixedThreadPool(3);
             for (int i = 0; i < inFiles.length; i++) {
                 CallableAdder adder = new CallableAdder(inFiles[i]);
-                executorService.submit(adder);
+                results.add(executorService.submit(adder));
             }
             executorService.shutdown();
             executorService.awaitTermination(60, TimeUnit.SECONDS);

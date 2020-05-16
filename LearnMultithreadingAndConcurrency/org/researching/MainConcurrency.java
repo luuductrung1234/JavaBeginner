@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MainConcurrency {
-    private static Logger logger = Logger.getLogger(Main.class.getName());
+    private static Logger logger = Logger.getLogger(MainConcurrency.class.getName());
 
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newFixedThreadPool(5);
