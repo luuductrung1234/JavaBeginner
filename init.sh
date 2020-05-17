@@ -38,4 +38,5 @@ echo "" >> $fileName
 echo "cd .." >> $fileName
 
 echo "Add new build script to 'build.sh' . . ."
-echo "sh build-$fileName.sh" >> "build.sh"
+echo "" >> "build.sh"
+echo "sh $fileName" >> "build.sh"
