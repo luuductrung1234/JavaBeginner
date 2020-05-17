@@ -3,6 +3,6 @@ cd LearnSerialization
 
 javac com/learning/Main.java
 
-Build Completed!
+echo "Build Learn Serialization Completed!"
 
 cd ..

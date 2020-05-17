@@ -33,7 +33,7 @@ echo "cd $learnName" >> $fileName
 echo "" >> $fileName
 echo "javac com/learning/Main.java" >> $fileName
 echo "" >> $fileName
-echo "Build Completed!" >> $fileName
+echo "echo \"Build Completed!\"" >> $fileName
 echo "" >> $fileName
 echo "cd .." >> $fileName
 

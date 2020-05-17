@@ -1,12 +1,24 @@
 package com.learning;
 
 import java.io.Serializable;
+import java.io.InvalidClassException;
 
 public class BankAccount implements Serializable {
     /**
-     *
+     * In serialization, Java calculate version unique identifier. it's a secure
+     * hash value that identifies the structure of the class.
+     * 
+     * This version will be attached when serializing an object to output stream. If
+     * there is an update to BankAccount type, the new version with be generated.
+     * 
+     * When deserializing, Java will compare current version with the version from
+     * input stream. If they are not matched, throw InvalidClassException
+     * 
+     * @see BankAccount
+     * @see InvalidClassException
      */
     private static final long serialVersionUID = 1L;
+
     private final String id;
     private int balance = 0;
     private char lastTxType;

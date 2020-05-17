@@ -15,11 +15,13 @@ public class Main {
     public static void main(String[] args) {
         BankAccount bankAccount = new BankAccount("1234", 500);
         bankAccount.deposit(100);
-        saveAccount(bankAccount, "account.dat");
+        saveAccount(bankAccount, "assets/account.dat");
 
-        BankAccount persistedAccount = loadAccount("account.dat");
-        logger.log(Level.INFO, "Loaded account id:{0}, balance:{1}",
-                new Object[] { persistedAccount.getId(), persistedAccount.getBalance() });
+        BankAccount persistedAccount = loadAccount("assets/account.dat");
+        if (persistedAccount != null)
+            logger.log(Level.INFO, "Loaded account id:{0}, balance:{1}, lastTxType:{2}, lastTxAmount:{3}",
+                    new Object[] { persistedAccount.getId(), persistedAccount.getBalance(),
+                            persistedAccount.getLastTxType(), persistedAccount.getLastTxAmount() });
     }
 
     public static void saveAccount(BankAccount bankAccount, String fileName) {
@@ -32,11 +34,13 @@ public class Main {
     }
 
     public static BankAccount loadAccount(String fileName) {
+        BankAccount account = null;
         try (ObjectInputStream objectInputStream = new ObjectInputStream(
                 Files.newInputStream(Paths.get(fileName), StandardOpenOption.CREATE))) {
-            return (BankAccount) objectInputStream.readObject();
-        } catch (IOException e) {
+            account = (BankAccount) objectInputStream.readObject();
+        } catch (Exception e) {
             logger.log(Level.SEVERE, "{0} - {1}", new Object[] { e.getClass().getSimpleName(), e.getMessage() });
         }
+        return account;
     }
 }
