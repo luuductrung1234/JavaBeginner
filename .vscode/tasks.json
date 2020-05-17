@@ -120,6 +120,25 @@
                 "com.learning.Main"
             ],
             "problemMatcher": []
+        },
+        {
+            "label": "start Learn Serialization - Main",
+            "type": "shell",
+            "command": "java",
+            "args": ["-cp", "LearnSerialization", "com.learning.Main"],
+            "problemMatcher": []
+        },
+        {
+            "label": "show serial version",
+            "type": "shell",
+            "command": "serialver",
+            "args": [
+                "-classpath",
+                "${input:classPath}",
+                "${input:serializableClass}"
+            ],
+            "detail": "Using serialver utility (found in JDK), to show serial version of class type (this class must implement Serializable interface)",
+            "problemMatcher": []
         }
     ],
     "inputs": [
@@ -135,6 +154,18 @@
             "type": "promptString",
             "default": "LearnSomething",
             "description": "first paramter for bash script"
+        },
+        {
+            "id": "classPath",
+            "type": "promptString",
+            "default": "LearnSerialization",
+            "description": "CLASSPATH"
+        },
+        {
+            "id": "serializableClass",
+            "type": "promptString",
+            "default": "com.learning.YourClass",
+            "description": "fully qualified class type (implement Serializable interface)"
         }
     ]
 }

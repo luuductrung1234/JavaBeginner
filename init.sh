@@ -33,9 +33,10 @@ echo "cd $learnName" >> $fileName
 echo "" >> $fileName
 echo "javac com/learning/Main.java" >> $fileName
 echo "" >> $fileName
-echo "Build Completed!" >> $fileName
+echo "echo \"Build Completed!\"" >> $fileName
 echo "" >> $fileName
 echo "cd .." >> $fileName
 
 echo "Add new build script to 'build.sh' . . ."
-echo "sh build-$fileName.sh" >> "build.sh"
+echo "" >> "build.sh"
+echo "sh $fileName" >> "build.sh"

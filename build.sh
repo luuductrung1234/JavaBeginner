@@ -14,3 +14,5 @@ sh build-learnmultithreadingandconcurrency.sh
 sh build-learnruntimetypeandreflection.sh
 
 sh build-learntypemetadatawithannotations.sh
+
+sh build-learnserialization.sh
