@@ -109,6 +109,17 @@
                 "com.learning.Main"
             ],
             "problemMatcher": []
+        },
+        {
+            "label": "start Learn Type Metadata and Annotations - Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnTypeMetadataWithAnnotations",
+                "com.learning.Main"
+            ],
+            "problemMatcher": []
         }
     ],
     "inputs": [
