@@ -1,7 +1,10 @@
 package com.learning;
 
 import java.io.Serializable;
+import java.io.IOException;
 import java.io.InvalidClassException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class BankAccount implements Serializable {
     /**
@@ -19,10 +22,14 @@ public class BankAccount implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-    private final String id;
+    private String id;
     private int balance = 0;
     private char lastTxType;
-    private int lastTxAmount = 0;
+    private int lastTxAmount;
+
+    public static final char TX_DEPOSIT = 'd';
+    public static final char TX_WITHDRAWAL = 'w';
+    public static final char TX_UNKNOWN = 'u';
 
     public BankAccount(String id) {
         super();
@@ -40,7 +47,7 @@ public class BankAccount implements Serializable {
      */
     public synchronized void deposit(int amount) {
         balance += amount;
-        lastTxType = 'd';
+        lastTxType = TX_DEPOSIT;
         lastTxAmount = amount;
     }
 
@@ -49,8 +56,20 @@ public class BankAccount implements Serializable {
      */
     public synchronized void withdrawal(int amount) {
         balance -= amount;
-        lastTxType = 'w';
+        lastTxType = TX_WITHDRAWAL;
         lastTxAmount = amount;
+    }
+
+    public void writeObject(ObjectOutputStream outputStream) throws IOException {
+        outputStream.defaultWriteObject();
+    }
+
+    public void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
+        ObjectInputStream.GetField fields = inputStream.readFields();
+        id = (String) fields.get("id", null);
+        balance = fields.get("balance", 0);
+        lastTxType = fields.get("lastTxType", TX_UNKNOWN);
+        lastTxAmount = fields.get("lastTxAmount", -1);
     }
 
     /**
