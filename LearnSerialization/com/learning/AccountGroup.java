@@ -26,7 +26,7 @@ public class AccountGroup implements Serializable {
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    public void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
+    private void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
         inputStream.defaultReadObject();
         for (BankAccount account : accountMap.values()) {
             totalBalance += account.getBalance();

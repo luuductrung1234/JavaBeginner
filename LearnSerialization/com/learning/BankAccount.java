@@ -66,7 +66,7 @@ public class BankAccount implements Serializable {
      * @param outputStream
      * @throws IOException
      */
-    public void writeObject(ObjectOutputStream outputStream) throws IOException {
+    private void writeObject(ObjectOutputStream outputStream) throws IOException {
         outputStream.defaultWriteObject();
     }
 
@@ -77,7 +77,7 @@ public class BankAccount implements Serializable {
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    public void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
+    private void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
         ObjectInputStream.GetField fields = inputStream.readFields();
         id = (String) fields.get("id", null);
         balance = fields.get("balance", 0);

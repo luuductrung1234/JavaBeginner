@@ -11,9 +11,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.learning.AccountGroup;
-import com.learning.BankAccount;
-
 public class Main {
     private static Logger logger = Logger.getLogger(Main.class.getSimpleName());
 
