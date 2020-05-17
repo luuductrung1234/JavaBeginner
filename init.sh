@@ -5,7 +5,7 @@ learnName=${1}
 echo "************************************************"
 echo "*                INIT PROJECT                  *"
 echo "************************************************"
-
+echo ""
 echo "Generate source code directory & files . . ."
 mkdir "$learnName"
 mkdir "$learnName/com"
@@ -33,4 +33,9 @@ echo "cd $learnName" >> $fileName
 echo "" >> $fileName
 echo "javac com/learning/Main.java" >> $fileName
 echo "" >> $fileName
+echo "Build Completed!" >> $fileName
+echo "" >> $fileName
 echo "cd .." >> $fileName
+
+echo "Add new build script to 'build.sh' . . ."
+echo "sh build-$fileName.sh" >> "build.sh"
