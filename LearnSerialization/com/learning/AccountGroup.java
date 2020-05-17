@@ -1,5 +1,7 @@
 package com.learning;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +17,20 @@ public class AccountGroup implements Serializable {
     public void addAccount(BankAccount account) {
         totalBalance += account.getBalance();
         accountMap.put(account.getId(), account);
+    }
+
+    /**
+     * custom read object
+     * 
+     * @param inputStream
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
+        inputStream.defaultReadObject();
+        for (BankAccount account : accountMap.values()) {
+            totalBalance += account.getBalance();
+        }
     }
 
     /**

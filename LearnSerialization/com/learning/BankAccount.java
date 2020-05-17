@@ -60,10 +60,23 @@ public class BankAccount implements Serializable {
         lastTxAmount = amount;
     }
 
+    /**
+     * custom write object
+     * 
+     * @param outputStream
+     * @throws IOException
+     */
     public void writeObject(ObjectOutputStream outputStream) throws IOException {
         outputStream.defaultWriteObject();
     }
 
+    /**
+     * custom read object
+     * 
+     * @param inputStream
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
         ObjectInputStream.GetField fields = inputStream.readFields();
         id = (String) fields.get("id", null);
