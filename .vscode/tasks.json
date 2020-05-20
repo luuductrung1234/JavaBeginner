@@ -139,6 +139,17 @@
             ],
             "detail": "Using serialver utility (found in JDK), to show serial version of class type (this class must implement Serializable interface)",
             "problemMatcher": []
+        },
+        {
+            "label": "start Learn Collection to Streams using Lambda - Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnCollectionToStreamsUsingLambda",
+                "com.learning.Main"
+            ],
+            "problemMatcher": []
         }
     ],
     "inputs": [
