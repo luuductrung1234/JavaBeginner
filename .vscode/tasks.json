@@ -147,7 +147,7 @@
             "args": [
                 "-cp",
                 "LearnCollectionToStreamsUsingLambda",
-                "com.learning.Main"
+                "com.comparator.Main"
             ],
             "problemMatcher": []
         },
@@ -158,7 +158,18 @@
             "args": [
                 "-cp",
                 "LearnCollectionToStreamsUsingLambda",
-                "com.teaching.MainPredicate"
+                "com.predicate.MainPredicate"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Collection to Streams using Lambda - MainCollections",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnCollectionToStreamsUsingLambda",
+                "com.collections.MainCollections"
             ],
             "problemMatcher": []
         }

@@ -1,4 +1,4 @@
-package com.learning;
+package com.comparator;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

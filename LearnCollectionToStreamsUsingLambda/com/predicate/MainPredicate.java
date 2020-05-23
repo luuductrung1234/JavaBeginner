@@ -1,4 +1,4 @@
-package com.teaching;
+package com.predicate;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

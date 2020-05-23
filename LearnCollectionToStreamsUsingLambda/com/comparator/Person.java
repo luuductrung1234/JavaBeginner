@@ -1,4 +1,4 @@
-package com.learning;
+package com.comparator;
 
 public class Person {
     private String firstName;

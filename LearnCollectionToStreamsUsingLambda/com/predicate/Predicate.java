@@ -1,4 +1,4 @@
-package com.teaching;
+package com.predicate;
 
 @FunctionalInterface
 public interface Predicate<T> {

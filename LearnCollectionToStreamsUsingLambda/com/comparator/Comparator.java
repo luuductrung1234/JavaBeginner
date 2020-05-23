@@ -1,4 +1,4 @@
-package com.learning;
+package com.comparator;
 
 import java.util.function.Function;
 
