@@ -19,6 +19,9 @@ public class MainMapFilterReduce {
         /*
          * Reduction is one of three step Map / Filter / Reduce pattern. It is a tricky
          * one, when design a reduce, notice Associative and Identity Element
+         * 
+         * The 0 is not always an identity element for BinaryOperator. There are an
+         * Optional class which is an better alternative for 0.
          */
         run("Not Associative - Demo", ints, ints1, ints2, (i1, i2) -> (i1 + i2) * (i1 + i2));
 
