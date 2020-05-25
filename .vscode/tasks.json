@@ -199,7 +199,7 @@
             "label": "start Learn Asynchronous Programming - Main",
             "type": "shell",
             "command": "java",
-            "args": ["-cp", "LearnAsynchronous", "com.learning.Main"],
+            "args": ["-cp", "LearnAsynchronous", "com.completionStage.Main"],
             "problemMatcher": []
         }
     ],

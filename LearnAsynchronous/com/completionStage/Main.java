@@ -1,4 +1,4 @@
-package com.learning;
+package com.completionStage;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
