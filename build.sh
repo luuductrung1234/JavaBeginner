@@ -18,3 +18,5 @@ sh build-learntypemetadatawithannotations.sh
 sh build-learnserialization.sh
 
 sh build-learncollectiontostreamsusinglambda.sh
+
+sh build-learnasynchronous.sh
