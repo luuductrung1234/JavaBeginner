@@ -49,6 +49,14 @@ public class MainMapFilterReduce {
         logger.log(Level.INFO, "Actual Reduction: {0}", actualReduction);
     }
 
+    /**
+     * Sample implementation of Collection's reduce function
+     * 
+     * @param values
+     * @param valueIfEmpty
+     * @param reduction
+     * @return
+     */
     public static int reduce(List<Integer> values, int valueIfEmpty, BinaryOperator<Integer> reduction) {
         int result = valueIfEmpty;
         for (Integer value : values) {
