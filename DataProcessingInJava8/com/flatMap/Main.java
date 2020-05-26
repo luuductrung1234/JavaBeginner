@@ -1,4 +1,4 @@
-package com.flatMapAndStreamOfNumbers;
+package com.flatMap;
 
 import java.io.IOException;
 import java.nio.file.Files;

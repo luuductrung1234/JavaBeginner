@@ -226,13 +226,20 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Data Processing in Java8 - FlatMap & Stream of Numbers Main",
+            "label": "start Learn Data Processing in Java8 - FlatMap Main",
+            "type": "shell",
+            "command": "java",
+            "args": ["-cp", "DataProcessingInJava8", "com.flatMap.Main"],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Data Processing in Java8 - Stream of Numbers Main",
             "type": "shell",
             "command": "java",
             "args": [
                 "-cp",
                 "DataProcessingInJava8",
-                "com.flatMapAndStreamOfNumbers.Main"
+                "com.streamOfNumbers.Main"
             ],
             "problemMatcher": []
         },
