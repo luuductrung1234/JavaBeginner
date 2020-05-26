@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build all",
             "type": "shell",
             "group": "build",
             "command": "sh",
@@ -13,6 +13,19 @@
             },
             "windows": {
                 "args": ["build.sh"]
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build newest",
+            "type": "shell",
+            "group": "build",
+            "command": "sh",
+            "osx": {
+                "args": ["build-newest.sh"]
+            },
+            "windows": {
+                "args": ["build-newest.sh"]
             },
             "problemMatcher": []
         },
@@ -198,6 +211,17 @@
                 "-cp",
                 "LearnCollectionToStreamsUsingLambda",
                 "com.streamapi.MainStreamApi"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Data Processing in Java8 - Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "DataProcessingInJava8",
+                "com.spliteratorPattern.Main"
             ],
             "problemMatcher": []
         },
