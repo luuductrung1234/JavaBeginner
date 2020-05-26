@@ -215,13 +215,24 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Data Processing in Java8 - Main",
+            "label": "start Learn Data Processing in Java8 - Spliterator Pattern Main",
             "type": "shell",
             "command": "java",
             "args": [
                 "-cp",
                 "DataProcessingInJava8",
                 "com.spliteratorPattern.Main"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Data Processing in Java8 - FlatMap & Stream of Numbers Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "DataProcessingInJava8",
+                "com.flatMapAndStreamOfNumbers.Main"
             ],
             "problemMatcher": []
         },
