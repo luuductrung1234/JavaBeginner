@@ -25,18 +25,19 @@ echo "}" >> "$learnName/com/learning/Main.java"
 
 echo "Generate build script files . . ."
 fileName="build-$(tr [A-Z] [a-z] <<< "$learnName").sh"
-touch "$fileName"
+mkdir "build"
+touch "./build/$fileName"
 
 echo "Generate build script content . . ."
-echo "" >> $fileName
-echo "cd $learnName" >> $fileName
-echo "" >> $fileName
-echo "javac com/learning/Main.java" >> $fileName
-echo "" >> $fileName
-echo "echo \"Build Completed!\"" >> $fileName
-echo "" >> $fileName
-echo "cd .." >> $fileName
+echo "" >> "./build/$fileName"
+echo "cd $learnName" >> "./build/$fileName"
+echo "" >> "./build/$fileName"
+echo "javac com/learning/Main.java" >> "./build/$fileName"
+echo "" >> "./build/$fileName"
+echo "echo \"Build Completed!\"" >> "./build/$fileName"
+echo "" >> "./build/$fileName"
+echo "cd .." >> "./build/$fileName"
 
 echo "Add new build script to 'build.sh' . . ."
 echo "" >> "build.sh"
-echo "sh $fileName" >> "build.sh"
+echo "sh ./build/$fileName" >> "build.sh"
