@@ -52,7 +52,7 @@ public class Main {
 
             // call get balance
             Method getBalanceMethod = theClass.getMethod("getBalance");
-            var balance = (int) getBalanceMethod.invoke(account);
+            int balance = (int) getBalanceMethod.invoke(account);
             logger.log(Level.INFO, "Current balance is: {0}", balance);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "{0} - {1}", new Object[] { e.getClass().getSimpleName(), e.getMessage() });

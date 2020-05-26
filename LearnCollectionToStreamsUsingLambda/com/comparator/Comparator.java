@@ -15,6 +15,6 @@ public interface Comparator<T> {
     }
 
     public static <T> Comparator<T> comparing(Function<T, Comparable> func) {
-        return (left, right) -> func.apply(left).compareTo(func.apply(right));
+        return (left, right) -> func.apply(left).compareTo(right);
     }
 }

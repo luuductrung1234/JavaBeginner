@@ -11,6 +11,9 @@
             "osx": {
                 "args": ["build.sh"]
             },
+            "windows": {
+                "args": ["build.sh"]
+            },
             "problemMatcher": []
         },
         {
@@ -19,6 +22,9 @@
             "group": "none",
             "command": "sh",
             "osx": {
+                "args": ["init.sh", "${input:firstParamter}"]
+            },
+            "windows": {
                 "args": ["init.sh", "${input:firstParamter}"]
             },
             "problemMatcher": []
@@ -182,6 +188,24 @@
                 "LearnCollectionToStreamsUsingLambda",
                 "com.mapFilterReduce.MainMapFilterReduce"
             ],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Collection to Streams using Lambda - MainStreamApi",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnCollectionToStreamsUsingLambda",
+                "com.streamapi.MainStreamApi"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Asynchronous Programming - Main",
+            "type": "shell",
+            "command": "java",
+            "args": ["-cp", "LearnAsynchronous", "com.completionStage.Main"],
             "problemMatcher": []
         }
     ],

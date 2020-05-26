@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,7 +44,7 @@ public class Main {
 
         AccountGroup persistedGroup = loadObject(fileName, AccountGroup.class);
         if (persistedGroup != null) {
-            var persistedAccounts = persistedGroup.getAccountMap().values();
+            Collection<BankAccount> persistedAccounts = persistedGroup.getAccountMap().values();
             logger.log(Level.INFO, "This group contains {0} accounts with total balance is {1}",
                     new Object[] { persistedAccounts.size(), persistedGroup.getTotalBalance() });
 
