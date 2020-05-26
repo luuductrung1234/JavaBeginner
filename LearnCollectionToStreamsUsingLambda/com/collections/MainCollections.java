@@ -39,7 +39,7 @@ public class MainCollections {
         firstMap.get(paris).add(p1);
         firstMap.computeIfAbsent(newYork, city -> new ArrayList<>()).add(p2);
         firstMap.computeIfAbsent(shanghai, city -> new ArrayList<>()).add(p3);
-        logger.log(Level.INFO, "People from Paris : {0}", firstMap.getOrDefault(paris, Collections.EMPTY_LIST));
+        logger.log(Level.INFO, "People from Paris : {0}", firstMap.getOrDefault(paris, Collections.emptyList()));
         logger.log(Level.INFO, "First Map");
         firstMap.forEach((c, p) -> logger.log(Level.INFO, "People from {0} : {1}", new Object[] { c, p }));
 
@@ -47,7 +47,7 @@ public class MainCollections {
         secondMap.computeIfAbsent(shanghai, city -> new ArrayList<>()).add(p4);
         secondMap.computeIfAbsent(shanghai, city -> new ArrayList<>()).add(p5);
         secondMap.computeIfAbsent(newYork, city -> new ArrayList<>()).add(p6);
-        logger.log(Level.INFO, "People from Paris : {0}", secondMap.getOrDefault(paris, Collections.EMPTY_LIST));
+        logger.log(Level.INFO, "People from Paris : {0}", secondMap.getOrDefault(paris, Collections.emptyList()));
         logger.log(Level.INFO, "Second Map");
         secondMap.forEach((c, p) -> logger.log(Level.INFO, "People from {0} : {1}", new Object[] { c, p }));
 

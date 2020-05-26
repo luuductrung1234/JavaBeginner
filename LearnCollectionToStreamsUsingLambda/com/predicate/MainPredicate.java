@@ -16,7 +16,7 @@ public class MainPredicate {
             return s.length() > 5;
         };
 
-        var text = "Hello";
+        String text = "Hello";
         if (notLargeTextPredicate.test(text))
             logger.log(Level.INFO, "{0} is shorter than 20 chars", text);
 
@@ -28,7 +28,7 @@ public class MainPredicate {
         if (orPredicate.test(text))
             logger.log(Level.INFO, "{0} is larger than 5 chars or shorter than 20 chars", text);
 
-        var checkText = "Hi";
+        String checkText = "Hi";
         Predicate<String> textEqualPredicate = Predicate.isEqualsTo(checkText);
         if (textEqualPredicate.test(text))
             logger.log(Level.INFO, "{0} is equal to {1}", new Object[] { text, checkText });

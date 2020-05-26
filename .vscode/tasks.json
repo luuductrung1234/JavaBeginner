@@ -11,6 +11,9 @@
             "osx": {
                 "args": ["build.sh"]
             },
+            "windows": {
+                "args": ["build.sh"]
+            },
             "problemMatcher": []
         },
         {
@@ -19,6 +22,9 @@
             "group": "none",
             "command": "sh",
             "osx": {
+                "args": ["init.sh", "${input:firstParamter}"]
+            },
+            "windows": {
                 "args": ["init.sh", "${input:firstParamter}"]
             },
             "problemMatcher": []

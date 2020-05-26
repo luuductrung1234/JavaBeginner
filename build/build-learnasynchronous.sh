@@ -1,7 +1,7 @@
 
 cd LearnAsynchronous
 
-javac com/learning/Main.java
+javac com/completionStage/Main.java
 
 echo "Build Learn Asynchronous Prgramming Completed!"
 
