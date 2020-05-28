@@ -244,6 +244,17 @@
             "problemMatcher": []
         },
         {
+            "label": "start Learn Data Processing in Java8 - Parallel Data Processing Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "DataProcessingInJava8",
+                "com.parallelDataProcessing.Main"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "start Learn Asynchronous Programming - Main",
             "type": "shell",
             "command": "java",
