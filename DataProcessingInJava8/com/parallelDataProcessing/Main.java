@@ -1,8 +1,11 @@
 package com.parallelDataProcessing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -32,31 +35,90 @@ public class Main {
 
     public static void main(String[] args) {
         parallelPerformanceDemo();
+        sneakyStatefulOperationDemo();
     }
 
+    /**
+     * Stateful operation in Parallel Data Processing
+     */
     private static void parallelPerformanceDemo() {
-        // generate 10M random longs in a loop
-        long startTime = System.nanoTime();
-        List<Long> list1 = new ArrayList<>(10_000_100);
-        for (int i = 0; i < 10_000_100; i++) {
-            list1.add(ThreadLocalRandom.current().nextLong());
-        }
-        logger.log(Level.INFO, "For-Loop - time taken: {0}", System.nanoTime() - startTime);
-
-        // generate 10M random longs in stream
-        startTime = System.nanoTime();
-        Stream<Long> stream = Stream.generate(() -> {
-            return ThreadLocalRandom.current().nextLong();
+        runWithPerformanceLogging("For-Loop", () -> {
+            // generate 10M random longs in a loop
+            List<Long> list1 = new ArrayList<>(10_000_100);
+            for (int i = 0; i < 10_000_100; i++) {
+                list1.add(ThreadLocalRandom.current().nextLong());
+            }
+            return null;
         });
-        List<Long> list2 = stream.limit(10_000_100).collect(Collectors.toList());
-        logger.log(Level.INFO, "Stream with limit() - time taken: {0} (\"Stream.limit()\" is a stateful method)",
-                System.nanoTime() - startTime);
 
-        // generate 10M random longs in stream using longs()
-        startTime = System.nanoTime();
-        Stream<Long> stream2 = ThreadLocalRandom.current().longs(10_000_100).mapToObj(Long::new);
-        List<Long> list3 = stream2.collect(Collectors.toList());
-        logger.log(Level.INFO, "Stream with longs() - time taken: {0} (\"longs()\" is a stateful method)",
-                System.nanoTime() - startTime);
+        runWithPerformanceLogging("Stream with limit()", () -> {
+            // generate 10M random longs in stream
+            // limit() is a stateful operation
+            Stream<Long> stream = Stream.generate(() -> {
+                return ThreadLocalRandom.current().nextLong();
+            });
+            List<Long> list2 = stream.limit(10_000_100).collect(Collectors.toList());
+            return null;
+        });
+
+        runWithPerformanceLogging("Stream with longs()", () -> {
+            // generate 10M random longs in stream using longs()
+            // longs() is a stateful operation
+            Stream<Long> stream2 = ThreadLocalRandom.current().longs(10_000_100).mapToObj(Long::valueOf);
+            List<Long> list3 = stream2.collect(Collectors.toList());
+            return null;
+        });
+    }
+
+    /**
+     * Hidden stateful operation - Demo
+     */
+    private static void sneakyStatefulOperationDemo() {
+        Person p1 = new Person("Trung", 22, "Ho Chi Minh");
+        Person p2 = new Person("Yen", 23, "Vinh");
+        Person p3 = new Person("Tuyen", 17, "Ho Chi Minh");
+
+        List<Person> people = Arrays.asList(p1, p2, p3);
+
+        runWithPerformanceLogging("Sneaky Stateful Operation", people.stream(), (stream) -> {
+            // List is a ordered data structure, so that a stream of List is ordered.
+            // That make this operation sneaky stateful
+            stream.parallel().filter(person -> person.getAge() > 20)
+                    .forEach(person -> logger.log(Level.INFO, person.toString()));
+        });
+
+        runWithPerformanceLogging("Fix Sneaky Stateful Operation", people.stream(), (stream) -> {
+            // unordered() make an operation ignore a ordered constraint of List
+            // That make this operation stateless
+            stream.parallel().unordered().filter(person -> person.getAge() > 20)
+                    .forEach(person -> logger.log(Level.INFO, person.toString()));
+        });
+    }
+
+    /**
+     * Run a supplier operation with performance analyst
+     * 
+     * @param operationName
+     * @param operation
+     */
+    private static void runWithPerformanceLogging(String operationName, Supplier<Void> operation) {
+        long startTime = System.nanoTime();
+        operation.get();
+        logger.log(Level.INFO, "{0} - time taken: {1}", new Object[] { operationName, System.nanoTime() - startTime });
+    }
+
+    /**
+     * Run a consumer operation with performance analyst
+     * 
+     * @param <T>
+     * @param operationName
+     * @param dataStream
+     * @param operation
+     */
+    private static <T> void runWithPerformanceLogging(String operationName, Stream<T> dataStream,
+            Consumer<Stream<T>> operation) {
+        long startTime = System.nanoTime();
+        operation.accept(dataStream);
+        logger.log(Level.INFO, "{0} - time taken: {1}", new Object[] { operationName, System.nanoTime() - startTime });
     }
 }
