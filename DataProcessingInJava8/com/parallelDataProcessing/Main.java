@@ -25,6 +25,10 @@ import java.util.stream.Stream;
  * Concurrency is about dealing with lots of things at once. Parallelism is
  * about doing lots of things at once. Parallelism is applied to processing data
  * 
+ * Be aware of your applied pattern in parallel data process. Parallelism can
+ * speed up computations. Specify your operation is stateful or stateless. A
+ * stateful operation can kill performances!
+ * 
  * Example: Think about quick sorting a set of integers. If we in multi-thread
  * environment, each thread sort one given set of integers. If we in parallel
  * environment,it means that a pool of thread will be able to sort one set of
