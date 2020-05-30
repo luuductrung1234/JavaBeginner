@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         // simple demo
-        streamOutput();
+        readFileToStream();
 
         // FlatMap demo
         try (Stream<String> streamOfLines = readToStreamOfLines(stream -> stream)) {
@@ -36,7 +36,7 @@ public class Main {
         }
     }
 
-    private static void streamOutput() {
+    private static void readFileToStream() {
         try (Stream<String> stream1 = Files.lines(Paths.get("./assets/TomSawyer_01.txt"));
                 Stream<String> stream2 = Files.lines(Paths.get("./assets/TomSawyer_02.txt"));
                 Stream<String> stream3 = Files.lines(Paths.get("./assets/TomSawyer_03.txt"));

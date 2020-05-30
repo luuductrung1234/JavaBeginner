@@ -250,7 +250,8 @@
             "args": [
                 "-cp",
                 "DataProcessingInJava8",
-                "com.parallelDataProcessing.Main"
+                "com.parallelDataProcessing.Main",
+                "${input:appInput}"
             ],
             "problemMatcher": []
         },
@@ -263,6 +264,13 @@
         }
     ],
     "inputs": [
+        {
+            "id": "appInput",
+            "type": "pickString",
+            "options": ["0", "1", "2", "3", "4"],
+            "default": "0",
+            "description": "Java application startup input parameter"
+        },
         {
             "id": "dependsOn",
             "type": "pickString",

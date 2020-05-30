@@ -3,6 +3,9 @@ package com.parallelDataProcessing;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.OptionalDouble;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.Future;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -34,8 +37,33 @@ public class Main {
     private static Logger logger = Logger.getLogger(Main.class.getSimpleName());
 
     public static void main(String[] args) {
-        parallelPerformanceDemo();
-        sneakyStatefulOperationDemo();
+        int choice = 0;
+        try {
+            choice = Integer.parseInt(args[0]);
+        } catch (Exception e) {
+            logger.log(Level.WARNING, "Please choose a specific demo to run!");
+        }
+
+        switch (choice) {
+            case 1:
+                parallelPerformanceDemo();
+                break;
+            case 2:
+                sneakyStatefulOperationDemo();
+                break;
+            case 3:
+                parallelReductionDemo();
+                break;
+            case 4:
+                tuningParallelismDemo();
+                break;
+            default:
+                parallelPerformanceDemo();
+                sneakyStatefulOperationDemo();
+                parallelReductionDemo();
+                tuningParallelismDemo();
+                break;
+        }
     }
 
     /**
@@ -74,11 +102,7 @@ public class Main {
      * Hidden stateful operation - Demo
      */
     private static void sneakyStatefulOperationDemo() {
-        Person p1 = new Person("Trung", 22, "Ho Chi Minh");
-        Person p2 = new Person("Yen", 23, "Vinh");
-        Person p3 = new Person("Tuyen", 17, "Ho Chi Minh");
-
-        List<Person> people = Arrays.asList(p1, p2, p3);
+        List<Person> people = getListOfPeople(10);
 
         runWithPerformanceLogging("Sneaky Stateful Operation", people.stream(), (stream) -> {
             // List is a ordered data structure, so that a stream of List is ordered.
@@ -93,6 +117,67 @@ public class Main {
             stream.parallel().unordered().filter(person -> person.getAge() > 20)
                     .forEach(person -> logger.log(Level.INFO, person.toString()));
         });
+    }
+
+    /**
+     * Map / Filter / Reduce in parallel
+     */
+    private static void parallelReductionDemo() {
+        List<Person> people = getListOfPeople(10);
+
+        runWithPerformanceLogging("ArrayList reduce in parallel", () -> {
+            // ArrayList is not concurrent aware, and race conditions will occur
+            List<Integer> ages = people.stream().parallel().reduce(new ArrayList<Integer>(), (list, p) -> {
+                list.add(p.getAge());
+                return list;
+            }, (list1, list2) -> list1);
+            logger.log(Level.INFO, "Reduce list of people to list of ages - in parallel with ArrayList: {0}", ages);
+            return null;
+        });
+
+        runWithPerformanceLogging("ArrayList reduce in parallel using Collector Pattern", () -> {
+            // Collectors.toList() will handle parallelism and thread-safety
+            List<Integer> ages = people.stream().parallel().map(Person::getAge).collect(Collectors.toList());
+            logger.log(Level.INFO, "Reduce list of people to list of ages - in parallel using Collector Pattern: {0}",
+                    ages);
+            return null;
+        });
+    }
+
+    /**
+     * Tuning Parallelism
+     */
+    private static void tuningParallelismDemo() {
+        try {
+            List<Person> people = getListOfPeople(10);
+
+            ForkJoinPool forkJoinPool = new ForkJoinPool(2);
+            Future<OptionalDouble> futureResult = forkJoinPool.submit(() -> {
+                return people.stream().parallel().mapToInt(p -> p.getAge()).filter(age -> age > 20).average();
+            });
+            logger.log(Level.INFO, "Average ages (that bigger than 20): {0}", futureResult.get());
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getClass().getSimpleName() + " - " + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * Helper method to get a sample list of people
+     * 
+     * @return
+     */
+    private static List<Person> getListOfPeople(int count) {
+        List<String> cities = Arrays.asList("Ho Chi Minh", "Vinh", "Ben Tre", "Quang Binh");
+        List<Person> people = new ArrayList<>();
+        for (int i = 1; i <= count; i++) {
+            StringBuilder nameBuilder = new StringBuilder();
+            nameBuilder.append("User ").append(i);
+            int randomAge = ThreadLocalRandom.current().nextInt(10, 100 + 1);
+            int randomCity = ThreadLocalRandom.current().nextInt(0, 3 + 1);
+            people.add(new Person(nameBuilder.toString(), randomAge, cities.get(randomCity)));
+        }
+        logger.log(Level.INFO, "Generated sample people: {0}", people);
+        return people;
     }
 
     /**
