@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.OptionalDouble;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadLocalRandom;
@@ -20,7 +21,6 @@ import java.util.stream.Stream;
  * 
  * - Parallel: one process = many thread, to go faster (problem: algorithm, data
  * distribution among the CPU cores and the balancing of the CPU loads)
- * 
  * 
  * Concurrency is about dealing with lots of things at once. Parallelism is
  * about doing lots of things at once. Parallelism is applied to processing data
@@ -57,14 +57,22 @@ public class Main {
             case 4:
                 tuningParallelismDemo();
                 break;
+            case 5:
+                summaryDemo();
+                break;
             default:
                 parallelPerformanceDemo();
                 sneakyStatefulOperationDemo();
                 parallelReductionDemo();
                 tuningParallelismDemo();
+                summaryDemo();
                 break;
         }
     }
+
+    // ********************************************
+    // * Demo Methods *****************************
+    // ********************************************
 
     /**
      * Stateful operation in Parallel Data Processing
@@ -160,6 +168,42 @@ public class Main {
             logger.log(Level.SEVERE, e.getClass().getSimpleName() + " - " + e.getMessage(), e);
         }
     }
+
+    /**
+     * Summary Demo (contains all concepts above)
+     */
+    private static void summaryDemo() {
+        logger.log(Level.INFO, "Simple stream");
+        Stream.iterate("+", s -> s + "+").limit(6).forEach(System.out::println);
+
+        System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "2");
+
+        logger.log(Level.INFO, "Simple stream in parallel");
+        Stream.iterate("+", s -> s + "+").parallel().limit(6)
+                .peek(s -> logger.log(Level.INFO, "processed in the thread {0}", Thread.currentThread().getName()))
+                .forEach(System.out::println);
+
+        logger.log(Level.INFO, "Simple stream in parallel (race condition)");
+        // ArrayList is not thread-save
+        List<String> strings = new ArrayList<>();
+        // CopyOnWriteArrayList is thread-save but low performance
+        // (should not use in production)
+        List<String> threadSaveStrings = new CopyOnWriteArrayList<>();
+        Stream.iterate("+", s -> s + "+").parallel().limit(1000).forEach(strings::add);
+        Stream.iterate("+", s -> s + "+").parallel().limit(1000).forEach(threadSaveStrings::add);
+        logger.log(Level.INFO, "Strings size: {0}", strings.size());
+        logger.log(Level.INFO, "Thread Save Strings size: {0}", threadSaveStrings.size());
+
+        // Collector Pattern
+        // Right pattern to use if you want to collect the element of a stream in a list
+        logger.log(Level.INFO, "Fix Simple stream in parallel (race condition)");
+        List<String> collection = Stream.iterate("+", s -> s + "+").parallel().limit(1000).collect(Collectors.toList());
+        logger.log(Level.INFO, "Strings size: {0}", collection.size());
+    }
+
+    // ********************************************
+    // * Helper Methods ***************************
+    // ********************************************
 
     /**
      * Helper method to get a sample list of people

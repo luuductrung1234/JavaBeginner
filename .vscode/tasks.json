@@ -267,7 +267,7 @@
         {
             "id": "appInput",
             "type": "pickString",
-            "options": ["0", "1", "2", "3", "4"],
+            "options": ["0", "1", "2", "3", "4", "5"],
             "default": "0",
             "description": "Java application startup input parameter"
         },
