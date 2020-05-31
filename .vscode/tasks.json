@@ -256,6 +256,18 @@
             "problemMatcher": []
         },
         {
+            "label": "start Learn Data Processing in Java8 - Processing Pipelines With Optionals Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "DataProcessingInJava8",
+                "com.processingPipelinesWithOptionals.Main",
+                "${input:appInput}"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "start Learn Asynchronous Programming - Main",
             "type": "shell",
             "command": "java",
