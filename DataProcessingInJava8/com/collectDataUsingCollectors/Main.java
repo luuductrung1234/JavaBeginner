@@ -23,7 +23,7 @@ import java.util.stream.Stream;
 /**
  * Collector is a reduction in a container.
  * 
- * A Collector is a special typo of reduction, which is precisely not an
+ * A Collector is a special type of reduction, which is precisely not an
  * aggregation. It is a terminal operation that triggers the computation of the
  * Stream.
  */

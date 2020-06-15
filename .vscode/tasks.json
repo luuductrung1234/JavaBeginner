@@ -280,6 +280,18 @@
             "problemMatcher": []
         },
         {
+            "label": "start Learn Data Processing in Java8 - Building Custom Collectors Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "DataProcessingInJava8",
+                "com.customCollectors.Main",
+                "${input:appInput}"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "start Learn Asynchronous Programming - Main",
             "type": "shell",
             "command": "java",
