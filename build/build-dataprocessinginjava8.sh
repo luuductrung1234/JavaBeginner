@@ -20,6 +20,8 @@ javac com/collectDataUsingCollectors/Person.java
 
 javac com/customCollectors/Main.java
 javac com/customCollectors/Person.java
+javac com/customCollectors/Movie.java
+javac com/customCollectors/Actor.java
 
 echo "Build Streams, Collectors, Optionals for Data Processing in Java8  Completed!"
 
