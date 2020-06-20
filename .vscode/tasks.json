@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build all",
             "type": "shell",
             "group": "build",
             "command": "sh",
@@ -13,6 +13,19 @@
             },
             "windows": {
                 "args": ["build.sh"]
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build newest",
+            "type": "shell",
+            "group": "build",
+            "command": "sh",
+            "osx": {
+                "args": ["build-newest.sh"]
+            },
+            "windows": {
+                "args": ["build-newest.sh"]
             },
             "problemMatcher": []
         },
@@ -202,6 +215,83 @@
             "problemMatcher": []
         },
         {
+            "label": "start Learn Data Processing in Java8 - Spliterator Pattern Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "DataProcessingInJava8",
+                "com.spliteratorPattern.Main"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Data Processing in Java8 - FlatMap Main",
+            "type": "shell",
+            "command": "java",
+            "args": ["-cp", "DataProcessingInJava8", "com.flatMap.Main"],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Data Processing in Java8 - Stream of Numbers Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "DataProcessingInJava8",
+                "com.streamOfNumbers.Main"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Data Processing in Java8 - Parallel Data Processing Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "DataProcessingInJava8",
+                "com.parallelDataProcessing.Main",
+                "${input:appInput}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Data Processing in Java8 - Processing Pipelines With Optionals Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "DataProcessingInJava8",
+                "com.processingPipelinesWithOptionals.Main",
+                "${input:appInput}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Data Processing in Java8 - Collect Data Using Collector Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "DataProcessingInJava8",
+                "com.collectDataUsingCollectors.Main",
+                "${input:appInput}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "start Learn Data Processing in Java8 - Building Custom Collectors Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "DataProcessingInJava8",
+                "com.customCollectors.Main",
+                "${input:appInput}"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "start Learn Asynchronous Programming - Main",
             "type": "shell",
             "command": "java",
@@ -210,6 +300,13 @@
         }
     ],
     "inputs": [
+        {
+            "id": "appInput",
+            "type": "pickString",
+            "options": ["0", "1", "2", "3", "4", "5"],
+            "default": "0",
+            "description": "Java application startup input parameter"
+        },
         {
             "id": "dependsOn",
             "type": "pickString",

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "************************************************"
-echo "*                BUILD PROJECT                 *"
+echo "*             BUILD ALL PROJECTS               *"
 echo "************************************************"
 echo ""
 
@@ -20,3 +20,5 @@ sh ./build/build-learnserialization.sh
 sh ./build/build-learncollectiontostreamsusinglambda.sh
 
 sh ./build/build-learnasynchronous.sh
+
+sh ./build/build-dataprocessinginjava8.sh
