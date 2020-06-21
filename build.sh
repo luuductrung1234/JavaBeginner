@@ -22,3 +22,8 @@ sh ./build/build-learncollectiontostreamsusinglambda.sh
 sh ./build/build-learnasynchronous.sh
 
 sh ./build/build-dataprocessinginjava8.sh
+
+echo "************************************************"
+echo "*               BUILD SUCCEEDED                *"
+echo "************************************************"
+echo ""
