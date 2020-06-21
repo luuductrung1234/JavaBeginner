@@ -43,14 +43,14 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn ClassPath - MainWithPackage",
+            "label": "(1) start - Learn ClassPath - MainWithPackage",
             "type": "shell",
             "command": "java",
             "args": ["-cp", "LearnClassPath", "com.learning.MainWithPackage"],
             "problemMatcher": []
         },
         {
-            "label": "start Learn ClassPath - MainWithoutPackage",
+            "label": "(1) start - Learn ClassPath - MainWithoutPackage",
             "type": "shell",
             "command": "java",
             "args": [
@@ -61,7 +61,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Logging - Main",
+            "label": "(2) start - Learn Logging - Main",
             "type": "shell",
             "command": "java",
             "args": [
@@ -73,7 +73,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Logging - MainWithConfigFile",
+            "label": "(2) start - Learn Logging - MainWithConfigFile",
             "type": "shell",
             "command": "java",
             "args": [
@@ -85,7 +85,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Logging - MainLoggerNaming",
+            "label": "(2) start - Learn Logging - MainLoggerNaming",
             "type": "shell",
             "command": "java",
             "args": [
@@ -97,29 +97,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Multithreading and Concurrency - Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnMultithreadingAndConcurrency",
-                "com.learning.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "start Learn Multithreading and Concurrency - MainConcurrency",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnMultithreadingAndConcurrency",
-                "org.researching.MainConcurrency"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "start Learn Runtime Type and Reflection - Main",
+            "label": "(3) - start - Learn Runtime Type and Reflection - Main",
             "type": "shell",
             "command": "java",
             "args": [
@@ -130,25 +108,14 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Type Metadata and Annotations - Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnTypeMetadataWithAnnotations",
-                "com.learning.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "start Learn Serialization - Main",
+            "label": "(4) start - Learn Serialization - Main",
             "type": "shell",
             "command": "java",
             "args": ["-cp", "LearnSerialization", "com.learning.Main"],
             "problemMatcher": []
         },
         {
-            "label": "show serial version",
+            "label": "(4) show serial version",
             "type": "shell",
             "command": "serialver",
             "args": [
@@ -160,7 +127,73 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Collection to Streams using Lambda - Main",
+            "label": "(5) start - Learn Type Metadata and Annotations - Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnTypeMetadataWithAnnotations",
+                "com.learning.Main"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "(6) start - Learn Multithreading and Concurrency - Main",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnMultithreadingAndConcurrency",
+                "com.learning.Main"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "(6) start - Learn Multithreading and Concurrency - MainConcurrency",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnMultithreadingAndConcurrency",
+                "org.researching.MainConcurrency"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "(6) start - Learn Multithreading and Concurrency - Use Thread & Runnable",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnMultithreadingAndConcurrency",
+                "useThreadAndRunnable.Main"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "(6) start - Learn Multithreading and Concurrency - Threads communication with Wait() & Notify()",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnMultithreadingAndConcurrency",
+                "useWaitAndNotify.Main"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "(6) start - Learn Multithreading and Concurrency - Suspend, Resume & Stop Threads",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnMultithreadingAndConcurrency",
+                "suspendResumeAndStop.Main"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "(7) start - Learn Collection to Streams using Lambda - Main",
             "type": "shell",
             "command": "java",
             "args": [
@@ -171,7 +204,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Collection to Streams using Lambda - MainPredicate",
+            "label": "(7) start - Learn Collection to Streams using Lambda - MainPredicate",
             "type": "shell",
             "command": "java",
             "args": [
@@ -182,7 +215,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Collection to Streams using Lambda - MainCollections",
+            "label": "(7) start - Learn Collection to Streams using Lambda - MainCollections",
             "type": "shell",
             "command": "java",
             "args": [
@@ -193,7 +226,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Collection to Streams using Lambda - MainMapFilterReduce",
+            "label": "(7) start - Learn Collection to Streams using Lambda - MainMapFilterReduce",
             "type": "shell",
             "command": "java",
             "args": [
@@ -204,7 +237,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Collection to Streams using Lambda - MainStreamApi",
+            "label": "(7) start - Learn Collection to Streams using Lambda - MainStreamApi",
             "type": "shell",
             "command": "java",
             "args": [
@@ -215,7 +248,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Data Processing in Java8 - Spliterator Pattern Main",
+            "label": "(8) start - Learn Data Processing in Java8 - Spliterator Pattern Main",
             "type": "shell",
             "command": "java",
             "args": [
@@ -226,14 +259,14 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Data Processing in Java8 - FlatMap Main",
+            "label": "(8) start - Learn Data Processing in Java8 - FlatMap Main",
             "type": "shell",
             "command": "java",
             "args": ["-cp", "DataProcessingInJava8", "com.flatMap.Main"],
             "problemMatcher": []
         },
         {
-            "label": "start Learn Data Processing in Java8 - Stream of Numbers Main",
+            "label": "(8) start - Learn Data Processing in Java8 - Stream of Numbers Main",
             "type": "shell",
             "command": "java",
             "args": [
@@ -244,7 +277,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Data Processing in Java8 - Parallel Data Processing Main",
+            "label": "(8) start - Learn Data Processing in Java8 - Parallel Data Processing Main",
             "type": "shell",
             "command": "java",
             "args": [
@@ -256,7 +289,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Data Processing in Java8 - Processing Pipelines With Optionals Main",
+            "label": "(8) start - Learn Data Processing in Java8 - Processing Pipelines With Optionals Main",
             "type": "shell",
             "command": "java",
             "args": [
@@ -268,7 +301,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Data Processing in Java8 - Collect Data Using Collector Main",
+            "label": "(8) start - Learn Data Processing in Java8 - Collect Data Using Collector Main",
             "type": "shell",
             "command": "java",
             "args": [
@@ -280,7 +313,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Data Processing in Java8 - Building Custom Collectors Main",
+            "label": "(8) start - Learn Data Processing in Java8 - Building Custom Collectors Main",
             "type": "shell",
             "command": "java",
             "args": [
@@ -292,7 +325,7 @@
             "problemMatcher": []
         },
         {
-            "label": "start Learn Asynchronous Programming - Main",
+            "label": "(9) start - Learn Asynchronous Programming - Main",
             "type": "shell",
             "command": "java",
             "args": ["-cp", "LearnAsynchronous", "com.completionStage.Main"],
