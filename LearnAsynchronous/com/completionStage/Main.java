@@ -7,6 +7,13 @@ import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * A task is a runnable or supplier object
+ * 
+ * CompletableFuture is implement both Future and CompletionStage interfaces
+ * 
+ * CompletionStage allow to chains multiple tasks
+ */
 public class Main {
     private static Logger logger = Logger.getLogger(Main.class.getSimpleName());
 
