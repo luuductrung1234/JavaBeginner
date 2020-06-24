@@ -328,7 +328,12 @@
             "label": "(9) start - Learn Asynchronous Programming - Main",
             "type": "shell",
             "command": "java",
-            "args": ["-cp", "LearnAsynchronous", "com.completionStage.Main"],
+            "args": [
+                "-cp",
+                "LearnAsynchronous",
+                "com.completionStage.Main",
+                "${input:appInput}"
+            ],
             "problemMatcher": []
         }
     ],
