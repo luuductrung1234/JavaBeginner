@@ -325,13 +325,25 @@
             "problemMatcher": []
         },
         {
-            "label": "(9) start - Learn Asynchronous Programming - Main",
+            "label": "(9) start - Learn Asynchronous Programming - Asynchronous Operation with CompletionStage",
             "type": "shell",
             "command": "java",
             "args": [
                 "-cp",
                 "LearnAsynchronous",
                 "com.completionStage.Main",
+                "${input:appInput}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "(9) start - Learn Asynchronous Programming - Triggering a Task on the Completion of Other Task",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "LearnAsynchronous",
+                "com.chainMultipleTasks.Main",
                 "${input:appInput}"
             ],
             "problemMatcher": []
