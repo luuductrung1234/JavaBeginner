@@ -26,11 +26,11 @@ public class LogFormatter extends Formatter {
         // This example will print date/time, class, and log level in yellow,
         // followed by the log message and it's parameters in white .
         StringBuilder builder = new StringBuilder();
-        builder.append(ANSI_YELLOW);
 
-        builder.append("[");
-        builder.append(calcDate(record.getMillis()));
-        builder.append("]");
+        builder.append(ANSI_YELLOW);
+        // builder.append("[");
+        // builder.append(calcDate(record.getMillis()));
+        // builder.append("]");
 
         builder.append(" [");
         builder.append(record.getSourceClassName());
@@ -41,23 +41,21 @@ public class LogFormatter extends Formatter {
         builder.append("]");
 
         builder.append(ANSI_WHITE);
-        builder.append(" - ");
-        builder.append(record.getMessage());
+        builder.append(" | ");
 
+        String message = record.getMessage();
         Object[] params = record.getParameters();
-
         if (params != null) {
-            builder.append("\t");
             for (int i = 0; i < params.length; i++) {
-                builder.append(params[i]);
-                if (i < params.length - 1)
-                    builder.append(", ");
+                message = message.replace("{" + i + "}", params[i].toString());
             }
         }
+        builder.append(message);
 
         builder.append(ANSI_RESET);
         builder.append("\n");
         return builder.toString();
+
     }
 
     private String calcDate(long millisecs) {
