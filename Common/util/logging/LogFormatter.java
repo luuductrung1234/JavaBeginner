@@ -3,6 +3,7 @@ package util.logging;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Formatter;
+import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
 public class LogFormatter extends Formatter {
@@ -27,7 +28,15 @@ public class LogFormatter extends Formatter {
         // followed by the log message and it's parameters in white .
         StringBuilder builder = new StringBuilder();
 
-        builder.append(ANSI_YELLOW);
+        if (record.getLevel().equals(Level.FINE))
+            builder.append(ANSI_WHITE);
+        if (record.getLevel().equals(Level.INFO))
+            builder.append(ANSI_GREEN);
+        if (record.getLevel().equals(Level.WARNING))
+            builder.append(ANSI_YELLOW);
+        if (record.getLevel().equals(Level.SEVERE))
+            builder.append(ANSI_RED);
+
         // builder.append("[");
         // builder.append(calcDate(record.getMillis()));
         // builder.append("]");

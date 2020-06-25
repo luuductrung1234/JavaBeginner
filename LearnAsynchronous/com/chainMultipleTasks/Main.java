@@ -35,8 +35,11 @@ public class Main {
             case 3:
                 threadToRunTriggeredTask();
                 break;
+            case 4:
+                summaryDemo();
+                break;
             default:
-                supplyResultToFunctionDemo();
+                summaryDemo();
                 break;
         }
     }
@@ -119,6 +122,8 @@ public class Main {
         });
         cf2.join();
 
+        logger.log(Level.WARNING, "BE CAREFUL: moving data from one thread to another is costly");
+
         /**
          * Two task are executed in different threads of given pool
          */
@@ -146,6 +151,13 @@ public class Main {
         cf4.join();
 
         executorService.shutdown();
+    }
+
+    /**
+     * Summary Demo (contains all concepts above)
+     */
+    private static void summaryDemo() {
+
     }
 
     // ********************************************
