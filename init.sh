@@ -1,6 +1,8 @@
 #!/bin/bash
 
 learnName=${1}
+buildNewestScriptFile="build-newest.sh"
+buildScriptFile="build.sh"
 
 echo "************************************************"
 echo "*                INIT PROJECT                  *"
@@ -32,20 +34,22 @@ echo "Generate build script content . . ."
 echo "" >> "./build/$fileName"
 echo "cd $learnName" >> "./build/$fileName"
 echo "" >> "./build/$fileName"
-echo "javac com/demo1/Main.java" >> "./build/$fileName"
+echo "javac -cp \".:../Common/common.jar\" com/demo1/Main.java" >> "./build/$fileName"
 echo "" >> "./build/$fileName"
 echo "echo \"Build Completed!\"" >> "./build/$fileName"
 echo "" >> "./build/$fileName"
 echo "cd .." >> "./build/$fileName"
 
-echo "Re-Create 'build-newest.sh' . . ."
-rm "build-newest.sh"
-echo "echo \"************************************************\"" >> "build-newest.sh"
-echo "echo \"*                BUILD PROJECT                 *\"" >> "build-newest.sh"
-echo "echo \"************************************************\"" >> "build-newest.sh"
-echo "" >> "build-newest.sh"
-echo "sh ./build/$fileName" >> "build-newest.sh"
+echo "Re-Create $buildNewestScriptFile . . ."
+rm $buildNewestScriptFile
+echo "echo \"************************************************\"" >> $buildNewestScriptFile
+echo "echo \"*                BUILD PROJECT                 *\"" >> $buildNewestScriptFile
+echo "echo \"************************************************\"" >> $buildNewestScriptFile
+echo "" >> $buildNewestScriptFile
+echo "sh ./build/build-common.sh" >> $buildNewestScriptFile
+echo "" >> $buildNewestScriptFile
+echo "sh ./build/$fileName" >> $buildNewestScriptFile
 
-echo "Append new build script to 'build.sh' . . ."
-echo "" >> "build.sh"
-echo "sh ./build/$fileName" >> "build.sh"
+echo "Append new build script to $buildScriptFile . . ."
+echo "" >> $buildScriptFile
+echo "sh ./build/$fileName" >> $buildScriptFile

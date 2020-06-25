@@ -52,12 +52,22 @@
         {
             "label": "(1) start - Learn ClassPath - MainWithoutPackage",
             "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnClassPath:LearnClassPath/com/learning",
-                "MainWithoutPackage"
-            ],
+            "osx": {
+                "command": "java",
+                "args": [
+                    "-cp",
+                    "LearnClassPath:LearnClassPath/com/learning",
+                    "MainWithoutPackage"
+                ]
+            },
+            "windows": {
+                "command": "java",
+                "args": [
+                    "-cp",
+                    "\"LearnClassPath;LearnClassPath\\com\\learning\"",
+                    "MainWithoutPackage"
+                ]
+            },
             "detail": "classpath LearnClassPath to discover com.learning.teaching.Student class. classpath LearnClassPath/com/learning to discover MainWithoutPackage class",
             "problemMatcher": []
         },
@@ -341,12 +351,22 @@
             "label": "(9) start - Learn Asynchronous Programming - Triggering a Task on the Completion of Other Task",
             "type": "shell",
             "command": "java",
-            "args": [
-                "-cp",
-                "Common:LearnAsynchronous",
-                "com.chainMultipleTasks.Main",
-                "${input:appInput}"
-            ],
+            "osx": {
+                "args": [
+                    "-cp",
+                    "LearnAsynchronous:Common/common.jar",
+                    "com.chainMultipleTasks.Main",
+                    "${input:appInput}"
+                ]
+            },
+            "windows": {
+                "args": [
+                    "-cp",
+                    "\"LearnAsynchronous;Common\\common.jar\"",
+                    "com.chainMultipleTasks.Main",
+                    "${input:appInput}"
+                ]
+            },
             "problemMatcher": []
         }
     ],
