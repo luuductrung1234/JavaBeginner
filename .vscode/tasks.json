@@ -58,6 +58,7 @@
                 "LearnClassPath:LearnClassPath/com/learning",
                 "MainWithoutPackage"
             ],
+            "detail": "classpath LearnClassPath to discover com.learning.teaching.Student class. classpath LearnClassPath/com/learning to discover MainWithoutPackage class",
             "problemMatcher": []
         },
         {
@@ -342,7 +343,7 @@
             "command": "java",
             "args": [
                 "-cp",
-                "LearnAsynchronous",
+                "Common:LearnAsynchronous",
                 "com.chainMultipleTasks.Main",
                 "${input:appInput}"
             ],

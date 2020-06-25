@@ -1,10 +1,7 @@
+javac LearnAsynchronous/com/completionStage/Main.java
 
-cd LearnAsynchronous
+javac LearnAsynchronous/com/chainMultipleTasks/User.java
+javac -cp "LearnAsynchronous;Common/common.jar" LearnAsynchronous/com/chainMultipleTasks/Main.java
 
-javac com/completionStage/Main.java
+echo "Build Learn Asynchronous Programming Completed!"
 
-javac com/chainMultipleTasks/Main.java
-
-echo "Build Learn Asynchronous Prgramming Completed!"
-
-cd ..
