@@ -23,6 +23,9 @@ public class Main {
             case 1:
                 supplyResultToFunctionDemo();
                 break;
+            case 2:
+                composingCompletableFuture();
+                break;
             default:
                 supplyResultToFunctionDemo();
                 break;
@@ -41,12 +44,29 @@ public class Main {
         completableFuture.thenAccept(users -> logger.log(Level.INFO, "{0} users have been read", users.size()));
     }
 
+    /**
+     * First task fetches a list of User Ids. Second task fetches Users from
+     * database. Both tasks should be run asynchronously
+     */
     private static void composingCompletableFuture() {
         Supplier<List<Long>> userIdSupplier = () -> remoteService();
         Function<List<Long>, List<User>> usersByIds = ids -> fetchUsersFromDB(ids);
 
+        /**
+         * this code conducted synchronously when the list of user IDs is available
+         */
         CompletableFuture<List<User>> completableFuture = CompletableFuture.supplyAsync(userIdSupplier)
                 .thenAccept(usersByIds);
+        completableFuture.thenAccept(users -> logger.log(Level.INFO, "{0} users have been read", users.size()));
+
+        /**
+         * this code is the right way to run asynchronously
+         * 
+         * CompletableFuture.thenCompose() work the same concept as Stream.flatMap()
+         */
+        Function<List<Long>, CompletableFuture<List<User>>> usersByIdsAsync = ids -> fetchUsersFromDB(ids);
+        completableFuture = CompletableFuture.supplyAsync(userIdSupplier).thenCompose(usersByIdsAsync);
+        completableFuture.thenAccept(users -> logger.log(Level.INFO, "{0} users have been read", users.size()));
     }
 
     // ********************************************
