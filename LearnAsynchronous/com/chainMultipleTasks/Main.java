@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.logging.Level;
@@ -54,7 +55,7 @@ public class Main {
                 .thenApply(list -> fetchUsersFromDB(list));
 
         completableFuture.thenRun(() -> logger.log(Level.INFO, "The list of users has bean read"));
-        completableFuture.thenAccept(users -> logger.log(Level.INFO, "{0} users have been read", users.size()));
+        completableFuture.thenAccept(displayUsers);
         completableFuture.join();
     }
 
@@ -73,8 +74,7 @@ public class Main {
         logger.log(Level.INFO, "RUN SYNCHRONOUS CHAIN OF TASKS");
         CompletableFuture<List<User>> completableFuture = CompletableFuture.supplyAsync(getUserIds)
                 .thenApply(getUsersByIds);
-        completableFuture.thenAccept(users -> logger.log(Level.INFO, "{0} users have been read", users.size()));
-        completableFuture.thenRun(() -> logger.log(Level.INFO, "The list of users has bean read"));
+        completableFuture.thenAccept(displayUsers);
         completableFuture.join();
 
         /**
@@ -86,7 +86,7 @@ public class Main {
         logger.log(Level.INFO, "RUN ASYNCHRONOUS CHAIN OF TASKS");
         Function<List<Long>, CompletableFuture<List<User>>> getUsersByIdsAsync = ids -> fetchUsersFromDBAsync(ids);
         completableFuture = CompletableFuture.supplyAsync(getUserIds).thenCompose(getUsersByIdsAsync);
-        completableFuture.thenAccept(users -> logger.log(Level.INFO, "{0} users have been read", users.size()));
+        completableFuture.thenAccept(displayUsers);
         completableFuture.join();
     }
 
@@ -164,6 +164,9 @@ public class Main {
     // * Helper Methods ***************************
     // ********************************************
 
+    /**
+     * Sample RemoteService which is run some where in internet
+     */
     private static List<Long> remoteService() {
         return Stream.of(1L, 2L, 3L).collect(Collectors.toList());
     }
@@ -178,6 +181,9 @@ public class Main {
         return users;
     }
 
+    /**
+     * Sample Data Access which query user from database
+     */
     private static CompletableFuture<List<User>> fetchUsersFromDBAsync(List<Long> userIds) {
         return CompletableFuture.supplyAsync(() -> {
             logger.log(Level.INFO, "receive userIds: {0}", userIds);
@@ -190,4 +196,7 @@ public class Main {
         });
     }
 
+    private static Consumer<List<User>> displayUsers = (users) -> {
+        logger.log(Level.INFO, "{0} users have been read", users.size());
+    };
 }
