@@ -368,6 +368,28 @@
                 ]
             },
             "problemMatcher": []
+        },
+        {
+            "label": "(9) start - Learn Asynchronous Programming - Dealing with Exceptions in the CompletionStage Pipeline",
+            "type": "shell",
+            "command": "java",
+            "osx": {
+                "args": [
+                    "-cp",
+                    "LearnAsynchronous:Common/common.jar",
+                    "com.exceptionInCompletionStagePipeline.Main",
+                    "${input:appInput}"
+                ]
+            },
+            "windows": {
+                "args": [
+                    "-cp",
+                    "\"LearnAsynchronous;Common\\common.jar\"",
+                    "com.exceptionInCompletionStagePipeline.Main",
+                    "${input:appInput}"
+                ]
+            },
+            "problemMatcher": []
         }
     ],
     "inputs": [
