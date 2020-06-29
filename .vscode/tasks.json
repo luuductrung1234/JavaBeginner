@@ -426,6 +426,18 @@
             "command": "javap",
             "args": ["-s", "-c", "-cp", "LearnGeneric", "erasure.ErasureDemo"],
             "problemMatcher": []
+        },
+        {
+            "label": "(10) start - Learn Generic - Reflection with Generic",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "\"LearnGeneric;Common\\common.jar\"",
+                "reflection.Main",
+                "${input:appInput}"
+            ],
+            "problemMatcher": []
         }
     ],
     "inputs": [
