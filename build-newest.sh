@@ -2,4 +2,6 @@ echo "************************************************"
 echo "*                BUILD PROJECT                 *"
 echo "************************************************"
 
-sh ./build/build-dataprocessinginjava8.sh
+sh ./build/build-common.sh
+
+sh ./build/build-learnasynchronous.sh

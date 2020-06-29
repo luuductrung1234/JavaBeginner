@@ -3,3 +3,7 @@
 **/*.out.txt
 **/*.dat
 **/dist
+
+# Only ignore JAR files from Common directory
+# These JAR files will be generate at runtime
+Common/*.jar

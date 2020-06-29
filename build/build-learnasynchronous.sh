@@ -1,8 +1,17 @@
-
 cd LearnAsynchronous
 
 javac com/completionStage/Main.java
 
-echo "Build Learn Asynchronous Prgramming Completed!"
+javac com/chainMultipleTasks/User.java
+javac -cp ".:../Common/common.jar" com/chainMultipleTasks/Main.java
+
+javac com/exceptionInCompletionStagePipeline/Utils.java
+javac com/exceptionInCompletionStagePipeline/User.java
+javac -cp ".:../Common/common.jar" com/exceptionInCompletionStagePipeline/Main.java
+
+javac com/performanceAsynchronousPipeline/User.java
+javac -cp ".:../Common/common.jar" com/performanceAsynchronousPipeline/module-info.java com/performanceAsynchronousPipeline/Main.java
+
+echo "Build Learn Asynchronous Programming Completed!"
 
 cd ..

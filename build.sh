@@ -5,6 +5,8 @@ echo "*             BUILD ALL PROJECTS               *"
 echo "************************************************"
 echo ""
 
+sh ./build/build-common.sh
+
 sh ./build/build-learnclasspath.sh
 
 sh ./build/build-learnlogging.sh
