@@ -10,7 +10,7 @@ javac com/exceptionInCompletionStagePipeline/User.java
 javac -cp ".:../Common/common.jar" com/exceptionInCompletionStagePipeline/Main.java
 
 javac com/performanceAsynchronousPipeline/User.java
-javac -cp ".:../Common/common.jar" com/performanceAsynchronousPipeline/Main.java
+javac -cp ".:../Common/common.jar" com/performanceAsynchronousPipeline/module-info.java com/performanceAsynchronousPipeline/Main.java
 
 echo "Build Learn Asynchronous Programming Completed!"
 

@@ -14,6 +14,7 @@ import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import util.logging.CustomLogger;
 
@@ -84,7 +85,7 @@ public class Main {
     // ********************************************
 
     private static Supplier<CompletableFuture<List<Long>>> getUserIds = () -> {
-        return CompletableFuture.supplyAsync(() -> List.of(1L, 2L, 3L));
+        return CompletableFuture.supplyAsync(() -> Stream.of(1L, 2L, 3L).collect(Collectors.toList()));
     };
 
     private static Function<List<Long>, CompletableFuture<List<User>>> getUsersFromDB = (List<Long> userIds) -> {

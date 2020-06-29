@@ -1,6 +1,7 @@
 package com.exceptionInCompletionStagePipeline;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
@@ -92,7 +93,8 @@ public class Main {
      */
     private static void exceptionallyPatternDemo() {
         CompletableFuture<List<User>> completableFuture = CompletableFuture.supplyAsync(remoteUserIDsService)
-                .thenApply(userIds -> fetchUsersFromDB.apply(userIds)).exceptionally(exception -> List.of());
+                .thenApply(userIds -> fetchUsersFromDB.apply(userIds))
+                .exceptionally(exception -> new ArrayList<User>());
 
         try {
             completableFuture.thenAccept(displayUsers).thenRun(
@@ -152,7 +154,7 @@ public class Main {
                     } else {
                         logger.log(Level.SEVERE, "EXCEPTION:{0} - CAUSE:{1} - MESSAGE:{2}", new Object[] {
                                 e.getClass().getName(), e.getCause().getClass().getName(), e.getMessage() });
-                        return List.of();
+                        return new ArrayList<User>();
                     }
                 });
     }
@@ -176,7 +178,7 @@ public class Main {
          * dealing with exception with CompletableFuture.exceptionally()
          */
         supply = CompletableFuture.supplyAsync(remoteUserIDsService);
-        fetch = supply.thenApply(fetchUsersFromDB).exceptionally(exception -> List.of());
+        fetch = supply.thenApply(fetchUsersFromDB).exceptionally(exception -> new ArrayList<User>());
         display = fetch.thenAccept(displayUsers);
         sleep(1_000);
         logger.log(Level.WARNING, "Supply : done={0} exception={1}",
@@ -210,7 +212,7 @@ public class Main {
             if (users != null)
                 return users;
             else
-                return List.of();
+                return new ArrayList<User>();
         });
         display = fetch.thenAccept(displayUsers);
         sleep(1_000);
