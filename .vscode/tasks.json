@@ -412,6 +412,44 @@
                 ]
             },
             "problemMatcher": []
+        },
+        {
+            "label": "(10) start - Learn Generic - Decompile a bytecode and print internal type signatures",
+            "type": "shell",
+            "command": "javap",
+            "args": ["-s", "-cp", "LearnGeneric", "erasure.ErasureDemo"],
+            "problemMatcher": []
+        },
+        {
+            "label": "(10) start - Learn Generic - Disassemble the code and print internal type signatures",
+            "type": "shell",
+            "command": "javap",
+            "args": ["-s", "-c", "-cp", "LearnGeneric", "erasure.ErasureDemo"],
+            "problemMatcher": []
+        },
+        {
+            "label": "(10) start - Learn Generic - Reflection with Generic",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "\"LearnGeneric;Common\\common.jar\"",
+                "reflection.Main",
+                "${input:appInput}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "(10) start - Learn Generic - Advanced Topics",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "\"LearnGeneric;Common\\common.jar\"",
+                "advancedTopics.Main",
+                "${input:appInput}"
+            ],
+            "problemMatcher": []
         }
     ],
     "inputs": [

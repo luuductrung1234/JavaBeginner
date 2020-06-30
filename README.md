@@ -11,3 +11,4 @@
 7.  Collection to Stream using Lambda
 8.  Data Processing in Java 8
 9.  Asynchronous
+10. Generic
