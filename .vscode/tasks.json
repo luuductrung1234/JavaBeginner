@@ -438,6 +438,18 @@
                 "${input:appInput}"
             ],
             "problemMatcher": []
+        },
+        {
+            "label": "(10) start - Learn Generic - Advanced Topics",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp",
+                "\"LearnGeneric;Common\\common.jar\"",
+                "advancedTopics.Main",
+                "${input:appInput}"
+            ],
+            "problemMatcher": []
         }
     ],
     "inputs": [

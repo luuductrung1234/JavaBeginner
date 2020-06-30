@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import util.exception.ExceptionHelper;
+
 public class Injector {
     private Map<Class<?>, Object> objectGraph = new HashMap<>();
 
@@ -30,7 +32,7 @@ public class Injector {
                     .toArray();
             return constructor.newInstance(args);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            Utils.throwException(e);
+            ExceptionHelper.throwException(e);
         }
         return null;
     }

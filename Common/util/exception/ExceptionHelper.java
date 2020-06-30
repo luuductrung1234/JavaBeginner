@@ -1,10 +1,10 @@
-package reflection;
+package util.exception;
 
 /**
  * This Utils class help to produce unchecked Exception
  */
-public class Utils {
-    protected Utils() {
+public class ExceptionHelper {
+    protected ExceptionHelper() {
         super();
     }
 
@@ -14,6 +14,6 @@ public class Utils {
     }
 
     public static void throwException(Throwable exception) {
-        Utils.<RuntimeException>throwException(exception, null);
+        ExceptionHelper.<RuntimeException>throwException(exception, null);
     }
 }

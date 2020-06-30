@@ -4,9 +4,11 @@ javac erasure/ErasureDemo.java
 
 javac reflection/MyLogger.java
 javac reflection/StringList.java
-javac reflection/Injector.java
-javac reflection/Utils.java
+javac -cp ".;../Common/common.jar" reflection/Injector.java
 javac -cp ".;../Common/common.jar" reflection/Main.java
+
+javac advancedTopics/Person.java
+javac -cp ".;../Common/common.jar" advancedTopics/Main.java
 
 echo "Build Learn Generic Completed!"
 
