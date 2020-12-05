@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MainWithPackage<JavaBeginner_9db1eac>",
+            "request": "launch",
+            "mainClass": "com.learning.MainWithPackage",
+            "classPaths": ["LearnClassPath"],
+            "projectName": "JavaBeginner_9db1eac"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MainWithoutPackage<JavaBeginner_9db1eac>",
+            "request": "launch",
+            "mainClass": "com.learning.MainWithoutPackage",
+            "classPaths": ["LearnClassPath", "LearnClassPath.com.learning"],
+            "projectName": "JavaBeginner_9db1eac"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Main<JavaBeginner_9db1eac>",
+            "request": "launch",
+            "mainClass": "com.learning.Main",
+            "classPaths": ["LearnLogging", "LearnClassPath"],
+            "projectName": "JavaBeginner_9db1eac"
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "[!]"
+    },
+    {
+      "path": "../1-ClassPath"
+    },
+    {
+      "path": "../2-Logging"
+    },
+    {
+      "path": "../3-RuntimeTypeAndReflection"
+    },
+    {
+      "path": "../4-Serialization"
+    },
+    {
+      "path": "../5-TypeMetadataWithAnnotation"
+    },
+    {
+      "path": "../6-MultiThreadAndConcurrency"
+    },
+    {
+      "path": "../7-CollectionToStreamUsingLambda"
+    },
+    {
+      "path": "../8-DataProcessingJava8"
+    },
+    {
+      "path": "../9-Asynchronous"
+    },
+    {
+      "path": "../10-Generic"
+    },
+    {
+      "path": "../11-NewIO"
+    },
+    {
+      "path": "../Common"
+    }
+  ],
+  "settings": {}
+}
