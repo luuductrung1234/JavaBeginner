@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import util.exception.ExceptionHelper;
 import util.logging.CustomLogger;
+import data.model.Person;
 
 public class PersonReader {
     private static Logger logger = CustomLogger.getLogger(PersonReader.class.getSimpleName());

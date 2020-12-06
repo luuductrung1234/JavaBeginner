@@ -7,3 +7,5 @@
 # Only ignore JAR files from Common directory
 # These JAR files will be generate at runtime
 Common/*.jar
+
+**/.DS_Store

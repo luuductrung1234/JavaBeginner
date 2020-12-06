@@ -4,4 +4,4 @@ echo "************************************************"
 
 sh ./build/build-common.sh
 
-sh ./build/build-learngeneric.sh
+sh ./build/build-learnio.sh

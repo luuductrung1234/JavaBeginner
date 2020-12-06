@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import util.logging.CustomLogger;
+import data.model.Person;
 
 public class Main {
     private static Logger logger = CustomLogger.getLogger(Main.class.getSimpleName());

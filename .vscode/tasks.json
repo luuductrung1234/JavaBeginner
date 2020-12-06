@@ -1,489 +1,487 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "build all",
-            "type": "shell",
-            "group": "build",
-            "command": "sh",
-            "osx": {
-                "args": ["build.sh"]
-            },
-            "windows": {
-                "args": ["build.sh"]
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "build newest",
-            "type": "shell",
-            "group": "build",
-            "command": "sh",
-            "osx": {
-                "args": ["build-newest.sh"]
-            },
-            "windows": {
-                "args": ["build-newest.sh"]
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "init",
-            "type": "shell",
-            "group": "none",
-            "command": "sh",
-            "osx": {
-                "args": ["init.sh", "${input:firstParamter}"]
-            },
-            "windows": {
-                "args": ["init.sh", "${input:firstParamter}"]
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "(1) start - Learn ClassPath - MainWithPackage",
-            "type": "shell",
-            "command": "java",
-            "args": ["-cp", "LearnClassPath", "com.learning.MainWithPackage"],
-            "problemMatcher": []
-        },
-        {
-            "label": "(1) start - Learn ClassPath - MainWithoutPackage",
-            "type": "shell",
-            "osx": {
-                "command": "java",
-                "args": [
-                    "-cp",
-                    "LearnClassPath:LearnClassPath/com/learning",
-                    "MainWithoutPackage"
-                ]
-            },
-            "windows": {
-                "command": "java",
-                "args": [
-                    "-cp",
-                    "\"LearnClassPath;LearnClassPath\\com\\learning\"",
-                    "MainWithoutPackage"
-                ]
-            },
-            "detail": "classpath LearnClassPath to discover com.learning.teaching.Student class. classpath LearnClassPath/com/learning to discover MainWithoutPackage class",
-            "problemMatcher": []
-        },
-        {
-            "label": "(2) start - Learn Logging - Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-Djava.util.logging.SimpleFormatter.format=%5$s,%2$s,%4$s%n",
-                "-cp",
-                "LearnLogging",
-                "com.learning.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(2) start - Learn Logging - MainWithConfigFile",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-Djava.util.logging.config.file=LearnLogging/com/learning/log.properties",
-                "-cp",
-                "LearnLogging",
-                "com.learning.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(2) start - Learn Logging - MainLoggerNaming",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-Djava.util.logging.config.file=LearnLogging/com/teaching/log.properties",
-                "-cp",
-                "LearnLogging",
-                "com.teaching.MainLoggerNaming"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(3) - start - Learn Runtime Type and Reflection - Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnRuntimeTypeAndReflection",
-                "com.learning.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(4) start - Learn Serialization - Main",
-            "type": "shell",
-            "command": "java",
-            "args": ["-cp", "LearnSerialization", "com.learning.Main"],
-            "problemMatcher": []
-        },
-        {
-            "label": "(4) show serial version",
-            "type": "shell",
-            "command": "serialver",
-            "args": [
-                "-classpath",
-                "${input:classPath}",
-                "${input:serializableClass}"
-            ],
-            "detail": "Using serialver utility (found in JDK), to show serial version of class type (this class must implement Serializable interface)",
-            "problemMatcher": []
-        },
-        {
-            "label": "(5) start - Learn Type Metadata and Annotations - Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnTypeMetadataWithAnnotations",
-                "com.learning.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(6) start - Learn Multithreading and Concurrency - Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnMultithreadingAndConcurrency",
-                "com.learning.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(6) start - Learn Multithreading and Concurrency - MainConcurrency",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnMultithreadingAndConcurrency",
-                "org.researching.MainConcurrency"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(6) start - Learn Multithreading and Concurrency - Use Thread & Runnable",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnMultithreadingAndConcurrency",
-                "useThreadAndRunnable.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(6) start - Learn Multithreading and Concurrency - Threads communication with Wait() & Notify()",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnMultithreadingAndConcurrency",
-                "useWaitAndNotify.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(6) start - Learn Multithreading and Concurrency - Suspend, Resume & Stop Threads",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnMultithreadingAndConcurrency",
-                "suspendResumeAndStop.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(7) start - Learn Collection to Streams using Lambda - Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnCollectionToStreamsUsingLambda",
-                "com.comparator.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(7) start - Learn Collection to Streams using Lambda - MainPredicate",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnCollectionToStreamsUsingLambda",
-                "com.predicate.MainPredicate"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(7) start - Learn Collection to Streams using Lambda - MainCollections",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnCollectionToStreamsUsingLambda",
-                "com.collections.MainCollections"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(7) start - Learn Collection to Streams using Lambda - MainMapFilterReduce",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnCollectionToStreamsUsingLambda",
-                "com.mapFilterReduce.MainMapFilterReduce"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(7) start - Learn Collection to Streams using Lambda - MainStreamApi",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnCollectionToStreamsUsingLambda",
-                "com.streamapi.MainStreamApi"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(8) start - Learn Data Processing in Java8 - Spliterator Pattern Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "DataProcessingInJava8",
-                "com.spliteratorPattern.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(8) start - Learn Data Processing in Java8 - FlatMap Main",
-            "type": "shell",
-            "command": "java",
-            "args": ["-cp", "DataProcessingInJava8", "com.flatMap.Main"],
-            "problemMatcher": []
-        },
-        {
-            "label": "(8) start - Learn Data Processing in Java8 - Stream of Numbers Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "DataProcessingInJava8",
-                "com.streamOfNumbers.Main"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(8) start - Learn Data Processing in Java8 - Parallel Data Processing Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "DataProcessingInJava8",
-                "com.parallelDataProcessing.Main",
-                "${input:appInput}"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(8) start - Learn Data Processing in Java8 - Processing Pipelines With Optionals Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "DataProcessingInJava8",
-                "com.processingPipelinesWithOptionals.Main",
-                "${input:appInput}"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(8) start - Learn Data Processing in Java8 - Collect Data Using Collector Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "DataProcessingInJava8",
-                "com.collectDataUsingCollectors.Main",
-                "${input:appInput}"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(8) start - Learn Data Processing in Java8 - Building Custom Collectors Main",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "DataProcessingInJava8",
-                "com.customCollectors.Main",
-                "${input:appInput}"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(9) start - Learn Asynchronous Programming - Asynchronous Operation with CompletionStage",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "LearnAsynchronous",
-                "com.completionStage.Main",
-                "${input:appInput}"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(9) start - Learn Asynchronous Programming - Triggering a Task on the Completion of Other Task",
-            "type": "shell",
-            "command": "java",
-            "osx": {
-                "args": [
-                    "-cp",
-                    "LearnAsynchronous:Common/common.jar",
-                    "com.chainMultipleTasks.Main",
-                    "${input:appInput}"
-                ]
-            },
-            "windows": {
-                "args": [
-                    "-cp",
-                    "\"LearnAsynchronous;Common\\common.jar\"",
-                    "com.chainMultipleTasks.Main",
-                    "${input:appInput}"
-                ]
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "(9) start - Learn Asynchronous Programming - Dealing with Exceptions in the CompletionStage Pipeline",
-            "type": "shell",
-            "command": "java",
-            "osx": {
-                "args": [
-                    "-cp",
-                    "LearnAsynchronous:Common/common.jar",
-                    "com.exceptionInCompletionStagePipeline.Main",
-                    "${input:appInput}"
-                ]
-            },
-            "windows": {
-                "args": [
-                    "-cp",
-                    "\"LearnAsynchronous;Common\\common.jar\"",
-                    "com.exceptionInCompletionStagePipeline.Main",
-                    "${input:appInput}"
-                ]
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "(9) start - Learn Asynchronous Programming - Performant Asynchronous Pipelines with CompletionStage",
-            "type": "shell",
-            "command": "java",
-            "osx": {
-                "args": [
-                    "-cp",
-                    "LearnAsynchronous:Common/common.jar",
-                    "com.performanceAsynchronousPipeline.Main",
-                    "${input:appInput}"
-                ]
-            },
-            "windows": {
-                "args": [
-                    "-cp",
-                    "\"LearnAsynchronous;Common\\common.jar\"",
-                    "com.performanceAsynchronousPipeline.Main",
-                    "${input:appInput}"
-                ]
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "(10) start - Learn Generic - Decompile a bytecode and print internal type signatures",
-            "type": "shell",
-            "command": "javap",
-            "args": ["-s", "-cp", "LearnGeneric", "erasure.ErasureDemo"],
-            "problemMatcher": []
-        },
-        {
-            "label": "(10) start - Learn Generic - Disassemble the code and print internal type signatures",
-            "type": "shell",
-            "command": "javap",
-            "args": ["-s", "-c", "-cp", "LearnGeneric", "erasure.ErasureDemo"],
-            "problemMatcher": []
-        },
-        {
-            "label": "(10) start - Learn Generic - Reflection with Generic",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "\"LearnGeneric;Common\\common.jar\"",
-                "reflection.Main",
-                "${input:appInput}"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "label": "(10) start - Learn Generic - Advanced Topics",
-            "type": "shell",
-            "command": "java",
-            "args": [
-                "-cp",
-                "\"LearnGeneric;Common\\common.jar\"",
-                "advancedTopics.Main",
-                "${input:appInput}"
-            ],
-            "problemMatcher": []
-        }
-    ],
-    "inputs": [
-        {
-            "id": "appInput",
-            "type": "pickString",
-            "options": ["0", "1", "2", "3", "4", "5"],
-            "default": "0",
-            "description": "Java application startup input parameter"
-        },
-        {
-            "id": "dependsOn",
-            "type": "pickString",
-            "options": ["build", "none"],
-            "default": "none",
-            "description": "task dependency"
-        },
-        {
-            "id": "firstParamter",
-            "type": "promptString",
-            "default": "LearnSomething",
-            "description": "first paramter for bash script"
-        },
-        {
-            "id": "classPath",
-            "type": "promptString",
-            "default": "LearnSerialization",
-            "description": "CLASSPATH"
-        },
-        {
-            "id": "serializableClass",
-            "type": "promptString",
-            "default": "com.learning.YourClass",
-            "description": "fully qualified class type (implement Serializable interface)"
-        }
-    ]
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "all - build",
+      "type": "shell",
+      "group": "build",
+      "command": "sh",
+      "osx": {
+        "args": ["build.sh"]
+      },
+      "windows": {
+        "args": ["build.sh"]
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "newest - build",
+      "type": "shell",
+      "group": "build",
+      "command": "sh",
+      "osx": {
+        "args": ["build-newest.sh"]
+      },
+      "windows": {
+        "args": ["build-newest.sh"]
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "init",
+      "type": "shell",
+      "group": "none",
+      "command": "sh",
+      "osx": {
+        "args": ["init.sh", "${input:firstParamter}"]
+      },
+      "windows": {
+        "args": ["init.sh", "${input:firstParamter}"]
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "(1) start - Learn ClassPath - MainWithPackage",
+      "type": "shell",
+      "command": "java",
+      "args": ["-cp", "LearnClassPath", "com.learning.MainWithPackage"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(1) start - Learn ClassPath - MainWithoutPackage",
+      "type": "shell",
+      "osx": {
+        "command": "java",
+        "args": [
+          "-cp",
+          "LearnClassPath:LearnClassPath/com/learning",
+          "MainWithoutPackage"
+        ]
+      },
+      "windows": {
+        "command": "java",
+        "args": [
+          "-cp",
+          "\"LearnClassPath;LearnClassPath\\com\\learning\"",
+          "MainWithoutPackage"
+        ]
+      },
+      "detail": "classpath LearnClassPath to discover com.learning.teaching.Student class. classpath LearnClassPath/com/learning to discover MainWithoutPackage class",
+      "problemMatcher": []
+    },
+    {
+      "label": "(2) start - Learn Logging - Main",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-Djava.util.logging.SimpleFormatter.format=%5$s,%2$s,%4$s%n",
+        "-cp",
+        "LearnLogging",
+        "com.learning.Main"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(2) start - Learn Logging - MainWithConfigFile",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-Djava.util.logging.config.file=LearnLogging/com/learning/log.properties",
+        "-cp",
+        "LearnLogging",
+        "com.learning.Main"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(2) start - Learn Logging - MainLoggerNaming",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-Djava.util.logging.config.file=LearnLogging/com/teaching/log.properties",
+        "-cp",
+        "LearnLogging",
+        "com.teaching.MainLoggerNaming"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(3) - start - Learn Runtime Type and Reflection - Main",
+      "type": "shell",
+      "command": "java",
+      "args": ["-cp", "LearnRuntimeTypeAndReflection", "com.learning.Main"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(4) start - Learn Serialization - Main",
+      "type": "shell",
+      "command": "java",
+      "args": ["-cp", "LearnSerialization", "com.learning.Main"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(4) show serial version",
+      "type": "shell",
+      "command": "serialver",
+      "args": [
+        "-classpath",
+        "${input:classPath}",
+        "${input:serializableClass}"
+      ],
+      "detail": "Using serialver utility (found in JDK), to show serial version of class type (this class must implement Serializable interface)",
+      "problemMatcher": []
+    },
+    {
+      "label": "(5) start - Learn Type Metadata and Annotations - Main",
+      "type": "shell",
+      "command": "java",
+      "args": ["-cp", "LearnTypeMetadataWithAnnotations", "com.learning.Main"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(6) start - Learn Multithreading and Concurrency - Main",
+      "type": "shell",
+      "command": "java",
+      "args": ["-cp", "LearnMultithreadingAndConcurrency", "com.learning.Main"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(6) start - Learn Multithreading and Concurrency - MainConcurrency",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "LearnMultithreadingAndConcurrency",
+        "org.researching.MainConcurrency"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(6) start - Learn Multithreading and Concurrency - Use Thread & Runnable",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "LearnMultithreadingAndConcurrency",
+        "useThreadAndRunnable.Main"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(6) start - Learn Multithreading and Concurrency - Threads communication with Wait() & Notify()",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "LearnMultithreadingAndConcurrency",
+        "useWaitAndNotify.Main"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(6) start - Learn Multithreading and Concurrency - Suspend, Resume & Stop Threads",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "LearnMultithreadingAndConcurrency",
+        "suspendResumeAndStop.Main"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(7) start - Learn Collection to Streams using Lambda - Main",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "LearnCollectionToStreamsUsingLambda",
+        "com.comparator.Main"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(7) start - Learn Collection to Streams using Lambda - MainPredicate",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "LearnCollectionToStreamsUsingLambda",
+        "com.predicate.MainPredicate"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(7) start - Learn Collection to Streams using Lambda - MainCollections",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "LearnCollectionToStreamsUsingLambda",
+        "com.collections.MainCollections"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(7) start - Learn Collection to Streams using Lambda - MainMapFilterReduce",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "LearnCollectionToStreamsUsingLambda",
+        "com.mapFilterReduce.MainMapFilterReduce"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(7) start - Learn Collection to Streams using Lambda - MainStreamApi",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "LearnCollectionToStreamsUsingLambda",
+        "com.streamapi.MainStreamApi"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(8) start - Learn Data Processing in Java8 - Spliterator Pattern Main",
+      "type": "shell",
+      "command": "java",
+      "args": ["-cp", "DataProcessingInJava8", "com.spliteratorPattern.Main"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(8) start - Learn Data Processing in Java8 - FlatMap Main",
+      "type": "shell",
+      "command": "java",
+      "args": ["-cp", "DataProcessingInJava8", "com.flatMap.Main"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(8) start - Learn Data Processing in Java8 - Stream of Numbers Main",
+      "type": "shell",
+      "command": "java",
+      "args": ["-cp", "DataProcessingInJava8", "com.streamOfNumbers.Main"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(8) start - Learn Data Processing in Java8 - Parallel Data Processing Main",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "DataProcessingInJava8",
+        "com.parallelDataProcessing.Main",
+        "${input:appInput}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(8) start - Learn Data Processing in Java8 - Processing Pipelines With Optionals Main",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "DataProcessingInJava8",
+        "com.processingPipelinesWithOptionals.Main",
+        "${input:appInput}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(8) start - Learn Data Processing in Java8 - Collect Data Using Collector Main",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "DataProcessingInJava8",
+        "com.collectDataUsingCollectors.Main",
+        "${input:appInput}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(8) start - Learn Data Processing in Java8 - Building Custom Collectors Main",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "DataProcessingInJava8",
+        "com.customCollectors.Main",
+        "${input:appInput}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(9) start - Learn Asynchronous Programming - Asynchronous Operation with CompletionStage",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "LearnAsynchronous",
+        "com.completionStage.Main",
+        "${input:appInput}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "(9) start - Learn Asynchronous Programming - Triggering a Task on the Completion of Other Task",
+      "type": "shell",
+      "command": "java",
+      "osx": {
+        "args": [
+          "-cp",
+          "LearnAsynchronous:Common/common.jar",
+          "com.chainMultipleTasks.Main",
+          "${input:appInput}"
+        ]
+      },
+      "windows": {
+        "args": [
+          "-cp",
+          "\"LearnAsynchronous;Common\\common.jar\"",
+          "com.chainMultipleTasks.Main",
+          "${input:appInput}"
+        ]
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "(9) start - Learn Asynchronous Programming - Dealing with Exceptions in the CompletionStage Pipeline",
+      "type": "shell",
+      "command": "java",
+      "osx": {
+        "args": [
+          "-cp",
+          "LearnAsynchronous:Common/common.jar",
+          "com.exceptionInCompletionStagePipeline.Main",
+          "${input:appInput}"
+        ]
+      },
+      "windows": {
+        "args": [
+          "-cp",
+          "\"LearnAsynchronous;Common\\common.jar\"",
+          "com.exceptionInCompletionStagePipeline.Main",
+          "${input:appInput}"
+        ]
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "(9) start - Learn Asynchronous Programming - Performant Asynchronous Pipelines with CompletionStage",
+      "type": "shell",
+      "command": "java",
+      "osx": {
+        "args": [
+          "-cp",
+          "LearnAsynchronous:Common/common.jar",
+          "com.performanceAsynchronousPipeline.Main",
+          "${input:appInput}"
+        ]
+      },
+      "windows": {
+        "args": [
+          "-cp",
+          "\"LearnAsynchronous;Common\\common.jar\"",
+          "com.performanceAsynchronousPipeline.Main",
+          "${input:appInput}"
+        ]
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "(10) start - Learn Generic - Decompile a bytecode and print internal type signatures",
+      "type": "shell",
+      "command": "javap",
+      "args": ["-s", "-cp", "LearnGeneric", "erasure.ErasureDemo"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(10) start - Learn Generic - Disassemble the code and print internal type signatures",
+      "type": "shell",
+      "command": "javap",
+      "args": ["-s", "-c", "-cp", "LearnGeneric", "erasure.ErasureDemo"],
+      "problemMatcher": []
+    },
+    {
+      "label": "(10) start - Learn Generic - Reflection with Generic",
+      "type": "shell",
+      "command": "java",
+      "osx": {
+        "args": [
+          "-cp",
+          "LearnGeneric:Common/common.jar",
+          "reflection.Main",
+          "${input:appInput}"
+        ]
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "(10) start - Learn Generic - Advanced Topics",
+      "type": "shell",
+      "command": "java",
+      "osx": {
+        "args": [
+          "-cp",
+          "LearnGeneric:Common/common.jar",
+          "advancedTopics.Main",
+          "${input:appInput}"
+        ]
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "(11) start - Learn Old Input/Output Stream",
+      "type": "shell",
+      "command": "java",
+      "osx": {
+        "args": [
+          "-cp",
+          "LearnIO:Common/common.jar",
+          "oldInputOutputStream.Main",
+          "${input:appInput}"
+        ]
+      },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "appInput",
+      "type": "pickString",
+      "options": ["0", "1", "2", "3", "4", "5"],
+      "default": "0",
+      "description": "Java application startup input parameter"
+    },
+    {
+      "id": "dependsOn",
+      "type": "pickString",
+      "options": ["build", "none"],
+      "default": "none",
+      "description": "task dependency"
+    },
+    {
+      "id": "firstParamter",
+      "type": "promptString",
+      "default": "LearnSomething",
+      "description": "first paramter for bash script"
+    },
+    {
+      "id": "classPath",
+      "type": "promptString",
+      "default": "LearnSerialization",
+      "description": "CLASSPATH"
+    },
+    {
+      "id": "serializableClass",
+      "type": "promptString",
+      "default": "com.learning.YourClass",
+      "description": "fully qualified class type (implement Serializable interface)"
+    }
+  ]
 }
