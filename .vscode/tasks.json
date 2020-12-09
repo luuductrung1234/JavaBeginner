@@ -448,6 +448,20 @@
         ]
       },
       "problemMatcher": []
+    },
+    {
+      "label": "(11) start - Learn New Input/Output Stream",
+      "type": "shell",
+      "command": "java",
+      "osx": {
+        "args": [
+          "-cp",
+          "LearnIO:Common/common.jar",
+          "newJavaIO.Main",
+          "${input:appInput}"
+        ]
+      },
+      "problemMatcher": []
     }
   ],
   "inputs": [
