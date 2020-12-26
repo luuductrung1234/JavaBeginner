@@ -2,5 +2,11 @@
   "java.server.launchMode": "Standard",
   "files.exclude": {
     "**/*.class": true
+  },
+  "java.project.referencedLibraries": {
+    "include": ["./lib/**/*.jar"],
+    "sources": {
+      "library/bar.jar": "library/sources/**/*.jar"
+    }
   }
 }
