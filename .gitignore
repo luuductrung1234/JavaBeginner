@@ -10,3 +10,12 @@
 Common/*.jar
 
 **/.DS_Store
+
+# Maven
+**/target
+**/.project
+**/.settings
+**/.classpath
+**/.factorypath
+**/*.iml
+**/.idea

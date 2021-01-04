@@ -1,0 +1,237 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "verify",
+      "type": "shell",
+      "command": "mvn -B verify",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "mvn -B test",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "mvn clean install",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "build (debug)",
+      "type": "shell",
+      "command": "mvn clean install -X",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "execute maven phases (build phases)",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["${input:mavenBuildPhases}"],
+      "problemMatcher": []
+    },
+    {
+      "label": "run",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "exec:java",
+        "-pl",
+        "weather",
+        "-Dexec.mainClass=com.learning.simple.weather.Main",
+        "-Dexec.args=\"${input:appArgs}\"",
+        "-e"
+        //"-X"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "show dependency",
+      "type": "shell",
+      "command": "mvn dependency:${input:dependency}",
+      "problemMatcher": []
+    },
+    {
+      "label": "show",
+      "type": "shell",
+      "command": "mvn help:${input:helpTarget}",
+      "detail": "ℹ️ describe a particular project/system/...",
+      "problemMatcher": []
+    },
+    {
+      "label": "show plugin [common][prefix]",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "help:describe",
+        "-Dplugin=${input:pluginName}",
+        "${input:describeFull}",
+        "${input:describeDetail}"
+      ],
+      "detail": "ℹ️ show information about Maven Plugins",
+      "problemMatcher": []
+    },
+    {
+      "label": "show plugin",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "help:describe",
+        "-DgroupId=${input:pluginGroupdId}",
+        "-DartifactId=${input:pluginArtifactId}",
+        "-Dversion=${input:pluginVersion}",
+        "${input:describeFull}",
+        "${input:describeDetail}"
+      ],
+      "detail": "ℹ️ show information about Maven Plugins",
+      "problemMatcher": []
+    },
+    {
+      "label": "show plugin goal [common][prefix]",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "help:describe",
+        "-Dplugin=${input:pluginName}",
+        "-Dgoal=${input:pluginGoal}",
+        "${input:describeFull}",
+        "${input:describeDetail}"
+      ],
+      "detail": "ℹ️ show information about Maven Plugins Goal",
+      "problemMatcher": []
+    },
+    {
+      "label": "show plugin",
+      "type": "shell",
+      "command": "mvn",
+      "args": [
+        "help:describe",
+        "-DgroupId=${input:pluginGroupdId}",
+        "-DartifactId=${input:pluginArtifactId}",
+        "-Dversion=${input:pluginVersion}",
+        "-Dgoal=${input:pluginGoal}",
+        "${input:describeFull}",
+        "${input:describeDetail}"
+      ],
+      "detail": "ℹ️ show information about Maven Plugins Goal",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "dependency",
+      "type": "pickString",
+      "options": ["tree", "build-classpath"],
+      "default": "tree",
+      "description": ""
+    },
+    {
+      "id": "helpTarget",
+      "type": "pickString",
+      "options": [
+        "system",
+        "effective-pom",
+        "active-profiles",
+        "effective-settings"
+      ],
+      "default": "pom",
+      "description": ""
+    },
+    {
+      "id": "pluginName",
+      "type": "promptString",
+      "default": "help",
+      "description": "ℹ️ plugin name [plugin-prefix] [groupId:artifactId] [groupId:artifactId:version]"
+    },
+    {
+      "id": "pluginGroupId",
+      "type": "promptString",
+      "default": "org.apache.maven.plugins",
+      "description": "ℹ️ plugin groupdId"
+    },
+    {
+      "id": "pluginArtifactId",
+      "type": "promptString",
+      "default": "maven-help-plugin",
+      "description": "ℹ️ plugin artifactId"
+    },
+    {
+      "id": "pluginVersion",
+      "type": "promptString",
+      "default": "",
+      "description": "ℹ️ plugin version (optional)"
+    },
+    {
+      "id": "pluginGoal",
+      "type": "promptString",
+      "default": "describe",
+      "description": "ℹ️ plugin version (optional)"
+    },
+    {
+      "id": "describeFull",
+      "type": "pickString",
+      "options": ["", "-Dfull"],
+      "default": "",
+      "description": "ℹ️ describe full information"
+    },
+    {
+      "id": "describeDetail",
+      "type": "pickString",
+      "options": ["", "-Ddetail"],
+      "default": "",
+      "description": "ℹ️ describe detail information"
+    },
+    {
+      "id": "mavenBuildPhases",
+      "type": "pickString",
+      "options": [
+        "pre-clean",
+        "clean",
+        "post-clean",
+        "validate",
+        "initialize",
+        "generate-sources",
+        "process-sources",
+        "generate-resources",
+        "process-resources",
+        "compile",
+        "process-classes",
+        "generate-test-sources",
+        "process-test-sources",
+        "generate-test-resources",
+        "process-test-resources",
+        "test-compile",
+        "process-test-classes",
+        "test",
+        "prepare-package",
+        "package",
+        "pre-integration-test",
+        "integration-test",
+        "post-integration-test",
+        "verify",
+        "install",
+        "deploy",
+        "pre-site",
+        "site",
+        "post-site",
+        "site-deploy"
+      ],
+      "default": "compile",
+      "description": "ℹ️ Maven build phases (lifecycle phases)"
+    },
+    {
+      "id": "appArgs",
+      "type": "promptString",
+      "default": "2502265",
+      "description": "ℹ️ console application input arguments"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "cSpell.words": ["Appender", "Configurator", "appenders", "woeid"],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/target": false,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.classpath": true,
+    "**/.factorypath": true,
+    "**/*.iml": true,
+    "**/.idea": true
+  }
+}

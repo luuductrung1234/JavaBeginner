@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.learning.simple</groupId>
+    <artifactId>bom</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>everything can be simple</name>
+    <properties>
+        <simpleVersion>1.0-SNAPSHOT</simpleVersion>
+    </properties>
+
+    <!--
+        Versions will be rolled automatically when using the maven-release plugin
+        or versions-maven-plugin when processing all submodules. Use explicit versions
+        instead of ${project.version} so they are reflected in the released pom file.
+    -->
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.learning.simple</groupId>
+                <artifactId>common</artifactId>
+                <version>${simpleVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.learning.simple</groupId>
+                <artifactId>weather</artifactId>
+                <version>${simpleVersion}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
