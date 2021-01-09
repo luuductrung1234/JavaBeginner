@@ -4,59 +4,78 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "verify",
+      "label": "execute Maven Phases (build phases)",
       "type": "shell",
-      "command": "mvn -B verify",
-      "group": "build",
-      "problemMatcher": []
+      "command": "mvn",
+      "args": [
+        "${input:mavenBuildPhases}",
+        "${input:userProperties}"
+        // "-X"
+      ],
+      "problemMatcher": [],
+      "detail": "ℹ️ http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#a-build-lifecycle-is-made-up-of-phases"
     },
     {
       "label": "test",
       "type": "shell",
-      "command": "mvn -B test",
+      "command": "mvn",
+      "args": [
+        "-B",
+        "test",
+        "-Dmaven.test.failure.ignore=${input:ignoreTestFail}"
+      ],
       "group": "test",
       "problemMatcher": []
     },
     {
       "label": "build",
       "type": "shell",
-      "command": "mvn clean install",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
-      "label": "build (debug)",
-      "type": "shell",
-      "command": "mvn clean install -X",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
-      "label": "execute maven phases (build phases)",
-      "type": "shell",
       "command": "mvn",
-      "args": ["${input:mavenBuildPhases}"],
+      "group": "build",
+      "args": [
+        "clean",
+        "install"
+        // "-pl",
+        // "${input:module}",
+        // "-am",
+        // "-X"
+      ],
       "problemMatcher": []
     },
     {
-      "label": "run",
+      "label": "run (maven)",
       "type": "shell",
       "command": "mvn",
       "args": [
         "exec:java",
         "-pl",
-        "weather",
-        "-Dexec.mainClass=com.learning.simple.weather.Main",
+        "${config:project.java.mainModule}",
+        "-Dexec.mainClass=${config:project.java.mainClass}",
         "-Dexec.args=\"${input:appArgs}\"",
         "-e"
         //"-X"
       ],
-      "problemMatcher": []
+      "problemMatcher": [],
+      "detail": "ℹ️ run Java application by Maven Exec Plugin"
+    },
+    {
+      "label": "run (java)",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "-cp",
+        "${config:project.java.mainClassPath}",
+        "${config:project.java.mainClass}",
+        "${input:appArgs}"
+      ],
+      "problemMatcher": [],
+      "dependsOn": ["build"],
+      "detail": "ℹ️ run Java application by Java CLI"
     },
     {
       "label": "show dependency",
       "type": "shell",
-      "command": "mvn dependency:${input:dependency}",
+      "command": "mvn dependency:${input:dependencyGoal}",
       "problemMatcher": []
     },
     {
@@ -91,7 +110,7 @@
         "${input:describeFull}",
         "${input:describeDetail}"
       ],
-      "detail": "ℹ️ show information about Maven Plugins",
+      "detail": "ℹ️ show arbitrary information about Maven Plugins",
       "problemMatcher": []
     },
     {
@@ -109,7 +128,7 @@
       "problemMatcher": []
     },
     {
-      "label": "show plugin",
+      "label": "show plugin goal",
       "type": "shell",
       "command": "mvn",
       "args": [
@@ -121,15 +140,15 @@
         "${input:describeFull}",
         "${input:describeDetail}"
       ],
-      "detail": "ℹ️ show information about Maven Plugins Goal",
+      "detail": "ℹ️ show arbitrary information about Maven Plugins Goal",
       "problemMatcher": []
     }
   ],
   "inputs": [
     {
-      "id": "dependency",
+      "id": "dependencyGoal",
       "type": "pickString",
-      "options": ["tree", "build-classpath"],
+      "options": ["tree", "build-classpath", "resolve"],
       "default": "tree",
       "description": ""
     },
@@ -174,6 +193,12 @@
       "type": "promptString",
       "default": "describe",
       "description": "ℹ️ plugin version (optional)"
+    },
+    {
+      "id": "userProperties",
+      "type": "promptString",
+      "default": "-Dmaven.test.skip=true",
+      "description": "ℹ️ user properties (can effect plugin goals paramters,...) E.g. \"-Dmaven.test.skip=true\""
     },
     {
       "id": "describeFull",
@@ -228,10 +253,24 @@
       "description": "ℹ️ Maven build phases (lifecycle phases)"
     },
     {
+      "id": "module",
+      "type": "pickString",
+      "options": ["bom", "common", "weather"],
+      "default": "weather",
+      "description": "ℹ️ Specific module in Maven-Multi-Modules project"
+    },
+    {
       "id": "appArgs",
       "type": "promptString",
       "default": "2502265",
       "description": "ℹ️ console application input arguments"
+    },
+    {
+      "id": "ignoreTestFail",
+      "type": "pickString",
+      "options": ["false", "true"],
+      "default": "false",
+      "description": "ℹ️ run test and ignore test fail"
     }
   ]
 }

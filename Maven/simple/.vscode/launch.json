@@ -15,6 +15,7 @@
       "name": "Launch Simple Weather",
       "request": "launch",
       "mainClass": "com.learning.simple.weather.Main",
+      "args": "2502265",
       "projectName": "weather"
     }
   ]

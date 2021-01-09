@@ -1,7 +1,7 @@
 **/*.class
 **/*.log
 **/*.out.txt
-**/*.dat
+# **/*.dat
 **/dist
 **/*.zip
 

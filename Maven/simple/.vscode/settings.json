@@ -13,5 +13,12 @@
     "**/.factorypath": true,
     "**/*.iml": true,
     "**/.idea": true
-  }
+  },
+  // ------------------------------------------
+  // Project
+  // ------------------------------------------
+  "project.java.mainModule": "weather",
+  "project.java.mainClassPath": "weather/target/weather-1.0-SNAPSHOT-jar-with-dependencies.jar",
+  "project.java.mainClass": "com.learning.simple.weather.Main",
+  "project.java.mainClass.args": "2502265"
 }
